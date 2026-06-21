@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Invoice Generator — Create &amp; Download PDF Invoices | InvoiceMaker</title>
-  <meta name="description" content="Free online invoice generator. Fill in your details, add line items with automatic tax and totals, and download a clean PDF invoice — all in your browser. Nothing is uploaded to a server.">
-  <meta name="keywords" content="free invoice generator, invoice template, create invoice online, invoice pdf, invoice maker, billing">
+  <title>Free Receipt Generator — Create &amp; Download PDF Payment Receipts | ReceiptMaker</title>
+  <meta name="description" content="Free online receipt generator. Fill in the payment details, add line items with automatic tax and totals, and download a clean PDF payment receipt — all in your browser. Nothing is uploaded to a server.">
+  <meta name="keywords" content="receipt generator, receipt maker, free receipt template, create a receipt online, payment receipt, receipt pdf">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Free Invoice Generator — Create &amp; Download PDF Invoices">
-  <meta property="og:description" content="Create professional invoices and download them as PDF, instantly and free. No signup, no uploads — everything runs in your browser.">
+  <meta property="og:title" content="Free Receipt Generator — Create &amp; Download PDF Payment Receipts">
+  <meta property="og:description" content="Create professional payment receipts and download them as PDF, instantly and free. No signup, no uploads — everything runs in your browser.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
+  <script>(function(){var l=document.createElement('link');l.rel='canonical';l.href="https://invoice.quietools.com"+location.pathname;document.head.appendChild(l);})();</script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
   <script>
@@ -82,7 +83,7 @@
     .link-btn{background:none;border:none;color:var(--muted);font-size:.8rem;cursor:pointer;padding:.2rem .3rem;text-decoration:underline}
     .link-btn:hover{color:#dc2626}
 
-    /* ---------- Invoice preview ---------- */
+    /* ---------- Receipt preview ---------- */
     .preview-head{display:flex;justify-content:space-between;align-items:center;padding:.85rem 1.1rem;border-bottom:1px solid var(--border)}
     .preview-head h2{font-size:.95rem;font-weight:700}
     .preview-head .hint{font-size:.78rem;color:var(--muted)}
@@ -93,7 +94,9 @@
     .inv-from-name{font-size:1.05rem;font-weight:700;margin-bottom:.15rem}
     .inv-from-addr{color:var(--muted);white-space:pre-line;font-size:.82rem}
     .inv-title-box{text-align:right;flex-shrink:0}
+    .inv-title-row{display:flex;align-items:center;justify-content:flex-end;gap:.55rem}
     .inv-title{font-size:1.9rem;font-weight:800;letter-spacing:.04em;color:var(--accent);line-height:1}
+    .paid-badge{display:inline-block;background:var(--ok);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .55rem;border-radius:999px;border:1px solid #15803d}
     .inv-meta{margin-top:.7rem;font-size:.82rem;color:var(--muted)}
     .inv-meta div{margin-top:.15rem}
     .inv-meta strong{color:var(--text);font-weight:600}
@@ -130,10 +133,11 @@
       .preview-col{position:static}
       .inv-top{flex-direction:column}
       .inv-title-box{text-align:left}
+      .inv-title-row{justify-content:flex-start}
       .inv-brand{max-width:100%}
     }
 
-    /* Print: show only the invoice */
+    /* Print: show only the receipt */
     @media print{
       header,.lead,.ad-slot,.editor,.preview-head,.seo,footer,.actions,h1{display:none !important}
       body{background:#fff}
@@ -145,43 +149,41 @@
       @page{margin:16mm}
     }
   </style>
-<script>(function(){var l=document.createElement('link');l.rel='canonical';l.href="https://invoice.quietools.com"+location.pathname;document.head.appendChild(l);})();</script></head>
+</head>
 <body>
   <header>
     <div class="header-inner">
-      <a href="/" class="logo">Invoice<span>Maker</span></a>
+      <a href="/" class="logo">Receipt<span>Maker</span></a>
       <span class="header-tag">Free · Private · No signup</span>
     </div>
   </header>
 
   <main>
-    <h1>Free Invoice Generator</h1>
-    <p class="lead">Create a professional invoice in seconds. Fill in the details on the left, watch the live preview on the right, then download a clean PDF or print it. Everything runs in your browser — nothing is uploaded.</p>
-
-    <p style="color:var(--muted);font-size:.92rem;margin:-.25rem 0 1.1rem">Free business documents: <strong>Invoice</strong> · <a href="/quote">Quote / Estimate</a> · <a href="/receipt">Receipt</a> &nbsp;·&nbsp; by profession: <a href="/freelance-invoice">Freelance</a> · <a href="/consultant-invoice">Consultant</a> · <a href="/contractor-invoice">Contractor</a></p>
+    <h1>Free Receipt Generator</h1>
+    <p class="lead">Create a professional payment receipt in seconds. Fill in the details on the left, watch the live preview on the right, then download a clean PDF or print it. Everything runs in your browser — nothing is uploaded.</p>
 
     <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
     <div class="ad-slot">Advertisement</div>
 
     <div class="layout">
       <!-- ============ EDITOR ============ -->
-      <section class="card editor" aria-label="Invoice editor">
+      <section class="card editor" aria-label="Receipt editor">
         <div class="grid-2">
           <div class="field">
-            <label for="invNumber">Invoice number</label>
-            <input id="invNumber" type="text" value="INV-0001" data-bind>
+            <label for="invNumber">Receipt number</label>
+            <input id="invNumber" type="text" value="REC-0001" data-bind>
           </div>
           <div class="field">
             <label for="currency">Currency</label>
             <select id="currency" data-bind></select>
           </div>
           <div class="field">
-            <label for="issueDate">Issue date</label>
+            <label for="issueDate">Date paid</label>
             <input id="issueDate" type="date" data-bind>
           </div>
           <div class="field">
-            <label for="dueDate">Due date</label>
-            <input id="dueDate" type="date" data-bind>
+            <label for="payMethod">Payment method</label>
+            <input id="payMethod" type="text" placeholder="Card / Cash / Bank transfer" data-bind>
           </div>
         </div>
 
@@ -204,13 +206,13 @@
           <button type="button" id="removeLogo" class="link-btn" style="display:none">Remove logo</button>
         </div>
 
-        <div class="section-title">Bill to (client)</div>
+        <div class="section-title">Received from</div>
         <div class="field">
-          <label for="toName">Client name</label>
+          <label for="toName">Customer name</label>
           <input id="toName" type="text" placeholder="Client Co." data-bind>
         </div>
         <div class="field">
-          <label for="toAddr">Client address &amp; contact</label>
+          <label for="toAddr">Customer address &amp; contact</label>
           <textarea id="toAddr" placeholder="456 Client Ave&#10;New York, NY 10001&#10;billing@client.co" data-bind></textarea>
         </div>
 
@@ -242,7 +244,7 @@
         </div>
         <div class="field full">
           <label for="notes">Notes / terms</label>
-          <textarea id="notes" placeholder="Payment due within 30 days. Bank transfer to ... Thank you for your business!" data-bind></textarea>
+          <textarea id="notes" placeholder="Payment received in full. Thank you for your business!" data-bind></textarea>
         </div>
 
         <div class="actions">
@@ -267,17 +269,20 @@
                 <div class="inv-from-addr" id="pvFromAddr"></div>
               </div>
               <div class="inv-title-box">
-                <div class="inv-title">INVOICE</div>
+                <div class="inv-title-row">
+                  <span class="paid-badge">Paid</span>
+                  <div class="inv-title">RECEIPT</div>
+                </div>
                 <div class="inv-meta">
                   <div><strong>No:</strong> <span id="pvNumber"></span></div>
-                  <div><strong>Issued:</strong> <span id="pvIssue"></span></div>
-                  <div><strong>Due:</strong> <span id="pvDue"></span></div>
+                  <div><strong>Date paid:</strong> <span id="pvIssue"></span></div>
+                  <div><strong>Payment method:</strong> <span id="pvMethod"></span></div>
                 </div>
               </div>
             </div>
 
             <div class="inv-parties">
-              <div class="label">Bill to</div>
+              <div class="label">Received from</div>
               <div class="inv-bill-name" id="pvToName"></div>
               <div class="inv-bill-addr" id="pvToAddr"></div>
             </div>
@@ -297,7 +302,7 @@
             <div class="inv-totals">
               <div class="row"><span>Subtotal</span><span class="v" id="pvSubtotal"></span></div>
               <div class="row" id="pvTaxRow"><span id="pvTaxLabel"></span><span class="v" id="pvTax"></span></div>
-              <div class="row grand"><span>Total</span><span class="v inv-grand-accent" id="pvGrand"></span></div>
+              <div class="row grand"><span>Total paid</span><span class="v inv-grand-accent" id="pvGrand"></span></div>
             </div>
 
             <div class="inv-notes" id="pvNotesWrap">
@@ -313,31 +318,34 @@
     <div class="ad-slot">Advertisement</div>
 
     <section class="seo">
-      <h2>How to create an invoice</h2>
-      <p>Creating an invoice with this free generator takes three steps:</p>
+      <h2>How to write a receipt</h2>
+      <p>Creating a payment receipt with this free generator takes three steps:</p>
       <ul>
-        <li><strong>Add your details.</strong> Enter your business name and address under <em>From</em>, then your client's details under <em>Bill to</em>. Set an invoice number, issue date, due date, and currency.</li>
-        <li><strong>List what you're billing for.</strong> Add a line for each product or service with a description, quantity, and unit price. Line totals, the subtotal, tax, and grand total are calculated automatically.</li>
-        <li><strong>Download or print.</strong> Click <em>Download PDF</em> to save a clean, print-ready invoice, or use <em>Print</em> to send it straight to your printer. Optionally upload your logo first to brand the document.</li>
+        <li><strong>Add your details.</strong> Enter your business name and address under <em>From</em>, then the person or company who paid under <em>Received from</em>. Set a receipt number, the date paid, the payment method, and currency.</li>
+        <li><strong>List what was paid for.</strong> Add a line for each product or service with a description, quantity, and unit price. Line totals, the subtotal, tax, and the total paid are calculated automatically.</li>
+        <li><strong>Download or print.</strong> Click <em>Download PDF</em> to save a clean, print-ready receipt marked <em>Paid</em>, or use <em>Print</em> to send it straight to your printer. Optionally upload your logo first to brand the document.</li>
       </ul>
 
-      <h2>What to include on an invoice</h2>
-      <p>A clear, professional invoice usually contains the following:</p>
+      <h2>What a receipt should include</h2>
+      <p>A receipt is proof that a payment has already been made. A clear, professional receipt usually contains the following:</p>
       <ul>
-        <li>The word <strong>"Invoice"</strong> and a unique invoice number for your records.</li>
-        <li>Your business name, address, and contact details, plus the client's billing details.</li>
-        <li>The <strong>issue date</strong> and a <strong>payment due date</strong>.</li>
-        <li>An itemized list of goods or services with quantities and unit prices.</li>
-        <li><strong>Subtotal, tax</strong> (if applicable), and the <strong>total amount due</strong> in your chosen currency.</li>
-        <li>Payment terms and instructions in the notes — for example accepted payment methods or a late-payment policy.</li>
+        <li>The word <strong>"Receipt"</strong> and a unique receipt number for your records.</li>
+        <li>Your business name, address, and contact details, plus the name of the customer who paid.</li>
+        <li>The <strong>date the payment was made</strong> and the <strong>payment method</strong> (for example card, cash, or bank transfer).</li>
+        <li>An itemized list of the goods or services that were paid for, with quantities and unit prices.</li>
+        <li><strong>Subtotal, tax</strong> (if applicable), and the <strong>total amount paid</strong> in your chosen currency.</li>
+        <li>A clear indication that the balance has been settled — such as a <strong>"Paid"</strong> mark — and any notes you want to add.</li>
       </ul>
+
+      <h2>Receipt vs invoice — what's the difference?</h2>
+      <p>An invoice and a receipt are easy to confuse, but they serve opposite ends of a transaction. An <strong>invoice</strong> is a request for payment: it is issued <em>before</em> money changes hands and tells the customer how much is owed and by when. A <strong>receipt</strong> is proof of payment: it is issued <em>after</em> the customer has paid and confirms that the amount was received. That is why a receipt records the date paid and the payment method instead of a due date, and why it is marked <em>Paid</em>. If you still need to request payment, use an invoice; once the money has arrived, give the customer a receipt.</p>
 
       <h2>Is my data private? (yes — generated in your browser)</h2>
-      <p>Yes. This invoice generator runs entirely in your browser. The details you type, the line items you add, and any logo you upload never leave your device — there is no account, no server upload, and no tracking of your invoice content. The PDF is built locally with the open-source jsPDF library and saved directly to your computer. Because nothing is stored, simply refresh the page when you're done and your information is gone.</p>
+      <p>Yes. This receipt generator runs entirely in your browser. The details you type, the line items you add, and any logo you upload never leave your device — there is no account, no server upload, and no tracking of your receipt content. The PDF is built locally with the open-source jsPDF library and saved directly to your computer. Because nothing is stored, simply refresh the page when you're done and your information is gone.</p>
     </section>
   </main>
 
-  <footer><p>InvoiceMaker — free browser-based invoice generator. Everything runs locally; nothing is uploaded.</p></footer>
+  <footer><p>ReceiptMaker — free browser-based receipt generator. Everything runs locally; nothing is uploaded.</p></footer>
 
   <script>
     "use strict";
@@ -469,13 +477,13 @@
 
       setText("pvFromName", fromName, "Your business name");
       setText("pvFromAddr", fromAddr, "Your address & contact details");
-      setText("pvToName", toName, "Client name");
-      setText("pvToAddr", toAddr, "Client address & contact details");
+      setText("pvToName", toName, "Customer name");
+      setText("pvToAddr", toAddr, "Customer address & contact details");
 
       // Meta
       setText("pvNumber", $("invNumber").value.trim(), "—");
       $("pvIssue").textContent = fmtDate($("issueDate").value);
-      $("pvDue").textContent = fmtDate($("dueDate").value);
+      setText("pvMethod", $("payMethod").value.trim(), "—");
 
       // Lines
       var html = "";
@@ -563,6 +571,7 @@
       var ACCENT = [37, 99, 235];
       var DARK = [31, 39, 51];
       var MUTED = [107, 118, 134];
+      var OK = [22, 163, 74];
 
       // Money formatting for PDF (avoid odd glyphs: use code instead of rare symbols)
       function pdfMoney(n){
@@ -590,10 +599,24 @@
         } catch(err){ /* ignore bad logo, keep going */ }
       }
 
-      // ----- INVOICE title (right) -----
+      // ----- RECEIPT title (right) -----
       doc.setFont("helvetica","bold"); doc.setFontSize(28);
       doc.setTextColor(ACCENT[0],ACCENT[1],ACCENT[2]);
-      doc.text("INVOICE", right, y+22, {align:"right"});
+      doc.text("RECEIPT", right, y+22, {align:"right"});
+
+      // ----- PAID badge (above title, right) -----
+      doc.setFont("helvetica","bold"); doc.setFontSize(9.5);
+      var paidText = "PAID";
+      var paidTextW = doc.getTextWidth(paidText);
+      var padX = 7, padY = 4, badgeH = 16;
+      var badgeW = paidTextW + padX*2;
+      var badgeX = right - badgeW;
+      var badgeY = y - 6;
+      doc.setFillColor(OK[0],OK[1],OK[2]);
+      if (doc.roundedRect){ doc.roundedRect(badgeX, badgeY, badgeW, badgeH, 8, 8, "F"); }
+      else { doc.rect(badgeX, badgeY, badgeW, badgeH, "F"); }
+      doc.setTextColor(255,255,255);
+      doc.text(paidText, right - padX, badgeY + badgeH - padY - 1, {align:"right"});
 
       // meta under title
       doc.setFontSize(9.5); doc.setFont("helvetica","normal");
@@ -603,9 +626,9 @@
         doc.text(lbl + "  " + (val||"—"), right, metaY, {align:"right"});
         metaY += 14;
       }
-      metaLine("Invoice No:", $("invNumber").value.trim());
-      metaLine("Issue date:", fmtDate($("issueDate").value));
-      metaLine("Due date:", fmtDate($("dueDate").value));
+      metaLine("Receipt No:", $("invNumber").value.trim());
+      metaLine("Date paid:", fmtDate($("issueDate").value));
+      metaLine("Payment method:", $("payMethod").value.trim());
 
       // ----- From block (left) -----
       var fromY = Math.max(logoBottom + 18, y + 18);
@@ -625,14 +648,14 @@
 
       y = Math.max(fromY, metaY) + 18;
 
-      // ----- Bill To -----
+      // ----- Received From -----
       doc.setFont("helvetica","bold"); doc.setFontSize(8.5);
       doc.setTextColor(MUTED[0],MUTED[1],MUTED[2]);
-      doc.text("BILL TO", M, y);
+      doc.text("RECEIVED FROM", M, y);
       y += 14;
       doc.setFont("helvetica","bold"); doc.setFontSize(11);
       doc.setTextColor(DARK[0],DARK[1],DARK[2]);
-      doc.text($("toName").value.trim() || "Client", M, y);
+      doc.text($("toName").value.trim() || "Customer", M, y);
       y += 14;
       doc.setFont("helvetica","normal"); doc.setFontSize(9.5);
       doc.setTextColor(MUTED[0],MUTED[1],MUTED[2]);
@@ -721,7 +744,7 @@
       doc.setDrawColor(DARK[0],DARK[1],DARK[2]); doc.setLineWidth(1);
       doc.line(totalsLabelX - 10, y - 6, totalsValX, y - 6);
       doc.setLineWidth(1);
-      totalRow("TOTAL", pdfMoney(data.grand), {bold:true, big:true, accent:true});
+      totalRow("TOTAL PAID", pdfMoney(data.grand), {bold:true, big:true, accent:true});
 
       // ----- Notes -----
       var notes = $("notes").value.trim();
@@ -740,8 +763,8 @@
       }
 
       // ----- Save -----
-      var fileNum = ($("invNumber").value.trim() || "invoice").replace(/[^\w.-]+/g,"_");
-      doc.save("invoice-" + fileNum + ".pdf");
+      var fileNum = ($("invNumber").value.trim() || "receipt").replace(/[^\w.-]+/g,"_");
+      doc.save("receipt-" + fileNum + ".pdf");
     }
 
     /* ---------- Wiring ---------- */
@@ -757,7 +780,7 @@
 
       // dates
       $("issueDate").value = todayISO();
-      $("dueDate").value = plusDaysISO(30);
+      $("payMethod").value = "Card";
 
       // starter line items
       makeRow("Web design services", 10, 75);
@@ -771,13 +794,13 @@
       $("downloadPdf").addEventListener("click", downloadPDF);
       $("printBtn").addEventListener("click", function(){ window.print(); });
       $("resetBtn").addEventListener("click", function(){
-        if (!confirm("Clear all fields and start a new invoice?")) return;
+        if (!confirm("Clear all fields and start a new receipt?")) return;
         document.querySelectorAll(".editor input[type=text], .editor textarea").forEach(function(el){ el.value=""; });
-        $("invNumber").value = "INV-0001";
+        $("invNumber").value = "REC-0001";
         $("taxRate").value = "0";
         $("taxLabel").value = "Tax";
         $("issueDate").value = todayISO();
-        $("dueDate").value = plusDaysISO(30);
+        $("payMethod").value = "Card";
         sel.value = "USD";
         itemsBody.innerHTML = "";
         makeRow();

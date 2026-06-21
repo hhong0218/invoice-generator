@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Invoice Generator — Create &amp; Download PDF Invoices | InvoiceMaker</title>
-  <meta name="description" content="Free online invoice generator. Fill in your details, add line items with automatic tax and totals, and download a clean PDF invoice — all in your browser. Nothing is uploaded to a server.">
-  <meta name="keywords" content="free invoice generator, invoice template, create invoice online, invoice pdf, invoice maker, billing">
+  <title>Free Quote &amp; Estimate Generator — Create &amp; Download PDF Quotes | QuoteMaker</title>
+  <meta name="description" content="Free online quote and estimate generator. Add line items with automatic tax and totals, then download a clean PDF price quote — all in your browser. Nothing is uploaded to a server.">
+  <meta name="keywords" content="quote generator, estimate generator, free quote template, create a quote online, price quote maker">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Free Invoice Generator — Create &amp; Download PDF Invoices">
-  <meta property="og:description" content="Create professional invoices and download them as PDF, instantly and free. No signup, no uploads — everything runs in your browser.">
+  <meta property="og:title" content="Free Quote &amp; Estimate Generator — Create &amp; Download PDF Quotes">
+  <meta property="og:description" content="Create professional price quotes and estimates and download them as PDF, instantly and free. No signup, no uploads — everything runs in your browser.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
+  <script>(function(){var l=document.createElement('link');l.rel='canonical';l.href="https://invoice.quietools.com"+location.pathname;document.head.appendChild(l);})();</script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
   <script>
@@ -82,7 +83,7 @@
     .link-btn{background:none;border:none;color:var(--muted);font-size:.8rem;cursor:pointer;padding:.2rem .3rem;text-decoration:underline}
     .link-btn:hover{color:#dc2626}
 
-    /* ---------- Invoice preview ---------- */
+    /* ---------- Quote preview ---------- */
     .preview-head{display:flex;justify-content:space-between;align-items:center;padding:.85rem 1.1rem;border-bottom:1px solid var(--border)}
     .preview-head h2{font-size:.95rem;font-weight:700}
     .preview-head .hint{font-size:.78rem;color:var(--muted)}
@@ -133,7 +134,7 @@
       .inv-brand{max-width:100%}
     }
 
-    /* Print: show only the invoice */
+    /* Print: show only the quote */
     @media print{
       header,.lead,.ad-slot,.editor,.preview-head,.seo,footer,.actions,h1{display:none !important}
       body{background:#fff}
@@ -145,31 +146,29 @@
       @page{margin:16mm}
     }
   </style>
-<script>(function(){var l=document.createElement('link');l.rel='canonical';l.href="https://invoice.quietools.com"+location.pathname;document.head.appendChild(l);})();</script></head>
+</head>
 <body>
   <header>
     <div class="header-inner">
-      <a href="/" class="logo">Invoice<span>Maker</span></a>
+      <a href="/" class="logo">Quote<span>Maker</span></a>
       <span class="header-tag">Free · Private · No signup</span>
     </div>
   </header>
 
   <main>
-    <h1>Free Invoice Generator</h1>
-    <p class="lead">Create a professional invoice in seconds. Fill in the details on the left, watch the live preview on the right, then download a clean PDF or print it. Everything runs in your browser — nothing is uploaded.</p>
-
-    <p style="color:var(--muted);font-size:.92rem;margin:-.25rem 0 1.1rem">Free business documents: <strong>Invoice</strong> · <a href="/quote">Quote / Estimate</a> · <a href="/receipt">Receipt</a> &nbsp;·&nbsp; by profession: <a href="/freelance-invoice">Freelance</a> · <a href="/consultant-invoice">Consultant</a> · <a href="/contractor-invoice">Contractor</a></p>
+    <h1>Free Quote &amp; Estimate Generator</h1>
+    <p class="lead">Create a professional price quote or estimate in seconds. Fill in the details on the left, watch the live preview on the right, then download a clean PDF or print it. Everything runs in your browser — nothing is uploaded.</p>
 
     <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
     <div class="ad-slot">Advertisement</div>
 
     <div class="layout">
       <!-- ============ EDITOR ============ -->
-      <section class="card editor" aria-label="Invoice editor">
+      <section class="card editor" aria-label="Quote editor">
         <div class="grid-2">
           <div class="field">
-            <label for="invNumber">Invoice number</label>
-            <input id="invNumber" type="text" value="INV-0001" data-bind>
+            <label for="invNumber">Quote number</label>
+            <input id="invNumber" type="text" value="QUO-0001" data-bind>
           </div>
           <div class="field">
             <label for="currency">Currency</label>
@@ -180,7 +179,7 @@
             <input id="issueDate" type="date" data-bind>
           </div>
           <div class="field">
-            <label for="dueDate">Due date</label>
+            <label for="dueDate">Valid until</label>
             <input id="dueDate" type="date" data-bind>
           </div>
         </div>
@@ -204,7 +203,7 @@
           <button type="button" id="removeLogo" class="link-btn" style="display:none">Remove logo</button>
         </div>
 
-        <div class="section-title">Bill to (client)</div>
+        <div class="section-title">Quote for (client)</div>
         <div class="field">
           <label for="toName">Client name</label>
           <input id="toName" type="text" placeholder="Client Co." data-bind>
@@ -242,7 +241,7 @@
         </div>
         <div class="field full">
           <label for="notes">Notes / terms</label>
-          <textarea id="notes" placeholder="Payment due within 30 days. Bank transfer to ... Thank you for your business!" data-bind></textarea>
+          <textarea id="notes" placeholder="This quote is valid for 30 days. Prices are an estimate and may change." data-bind></textarea>
         </div>
 
         <div class="actions">
@@ -267,17 +266,17 @@
                 <div class="inv-from-addr" id="pvFromAddr"></div>
               </div>
               <div class="inv-title-box">
-                <div class="inv-title">INVOICE</div>
+                <div class="inv-title">QUOTE</div>
                 <div class="inv-meta">
                   <div><strong>No:</strong> <span id="pvNumber"></span></div>
                   <div><strong>Issued:</strong> <span id="pvIssue"></span></div>
-                  <div><strong>Due:</strong> <span id="pvDue"></span></div>
+                  <div><strong>Valid until:</strong> <span id="pvDue"></span></div>
                 </div>
               </div>
             </div>
 
             <div class="inv-parties">
-              <div class="label">Bill to</div>
+              <div class="label">Quote for</div>
               <div class="inv-bill-name" id="pvToName"></div>
               <div class="inv-bill-addr" id="pvToAddr"></div>
             </div>
@@ -313,31 +312,35 @@
     <div class="ad-slot">Advertisement</div>
 
     <section class="seo">
-      <h2>How to create an invoice</h2>
-      <p>Creating an invoice with this free generator takes three steps:</p>
+      <h2>How to write a quote</h2>
+      <p>Creating a price quote with this free generator takes three steps:</p>
       <ul>
-        <li><strong>Add your details.</strong> Enter your business name and address under <em>From</em>, then your client's details under <em>Bill to</em>. Set an invoice number, issue date, due date, and currency.</li>
-        <li><strong>List what you're billing for.</strong> Add a line for each product or service with a description, quantity, and unit price. Line totals, the subtotal, tax, and grand total are calculated automatically.</li>
-        <li><strong>Download or print.</strong> Click <em>Download PDF</em> to save a clean, print-ready invoice, or use <em>Print</em> to send it straight to your printer. Optionally upload your logo first to brand the document.</li>
+        <li><strong>Add your details.</strong> Enter your business name and address under <em>From</em>, then your client's details under <em>Quote for</em>. Set a quote number, issue date, a "valid until" date, and currency.</li>
+        <li><strong>List what you're quoting for.</strong> Add a line for each product or service with a description, quantity, and unit price. Line totals, the subtotal, tax, and grand total are calculated automatically.</li>
+        <li><strong>Download or print.</strong> Click <em>Download PDF</em> to save a clean, print-ready quote, or use <em>Print</em> to send it straight to your printer. Optionally upload your logo first to brand the document.</li>
       </ul>
 
-      <h2>What to include on an invoice</h2>
-      <p>A clear, professional invoice usually contains the following:</p>
+      <h2>What to include in a quote</h2>
+      <p>A clear, professional quote (or estimate) usually contains the following:</p>
       <ul>
-        <li>The word <strong>"Invoice"</strong> and a unique invoice number for your records.</li>
-        <li>Your business name, address, and contact details, plus the client's billing details.</li>
-        <li>The <strong>issue date</strong> and a <strong>payment due date</strong>.</li>
+        <li>The word <strong>"Quote"</strong> and a unique quote number for your records.</li>
+        <li>Your business name, address, and contact details, plus the client's details.</li>
+        <li>The <strong>issue date</strong> and a <strong>"valid until" date</strong> so the client knows how long the prices are guaranteed.</li>
         <li>An itemized list of goods or services with quantities and unit prices.</li>
-        <li><strong>Subtotal, tax</strong> (if applicable), and the <strong>total amount due</strong> in your chosen currency.</li>
-        <li>Payment terms and instructions in the notes — for example accepted payment methods or a late-payment policy.</li>
+        <li><strong>Subtotal, tax</strong> (if applicable), and the <strong>total estimated price</strong> in your chosen currency.</li>
+        <li>Terms and conditions in the notes — for example whether prices are fixed or estimated, and what happens if the scope changes.</li>
       </ul>
+
+      <h2>Quotes vs invoices: what's the difference?</h2>
+      <p>A quote (also called an estimate) is sent <em>before</em> any work begins. It tells a prospective client how much a job is expected to cost so they can decide whether to go ahead. A quote is not a request for payment — it's a proposed price, usually valid for a limited time.</p>
+      <p>An invoice, by contrast, is sent <em>after</em> goods or services have been delivered, and it <em>is</em> a request for payment by a due date. Many businesses start with a quote, get the client's approval, complete the work, then issue an invoice for the agreed amount. When you're ready to bill an accepted quote, you can use a separate invoice generator to turn it into a payable invoice.</p>
 
       <h2>Is my data private? (yes — generated in your browser)</h2>
-      <p>Yes. This invoice generator runs entirely in your browser. The details you type, the line items you add, and any logo you upload never leave your device — there is no account, no server upload, and no tracking of your invoice content. The PDF is built locally with the open-source jsPDF library and saved directly to your computer. Because nothing is stored, simply refresh the page when you're done and your information is gone.</p>
+      <p>Yes. This quote generator runs entirely in your browser. The details you type, the line items you add, and any logo you upload never leave your device — there is no account, no server upload, and no tracking of your quote content. The PDF is built locally with the open-source jsPDF library and saved directly to your computer. Because nothing is stored, simply refresh the page when you're done and your information is gone.</p>
     </section>
   </main>
 
-  <footer><p>InvoiceMaker — free browser-based invoice generator. Everything runs locally; nothing is uploaded.</p></footer>
+  <footer><p>QuoteMaker — free browser-based quote and estimate generator. Everything runs locally; nothing is uploaded.</p></footer>
 
   <script>
     "use strict";
@@ -590,10 +593,10 @@
         } catch(err){ /* ignore bad logo, keep going */ }
       }
 
-      // ----- INVOICE title (right) -----
+      // ----- QUOTE title (right) -----
       doc.setFont("helvetica","bold"); doc.setFontSize(28);
       doc.setTextColor(ACCENT[0],ACCENT[1],ACCENT[2]);
-      doc.text("INVOICE", right, y+22, {align:"right"});
+      doc.text("QUOTE", right, y+22, {align:"right"});
 
       // meta under title
       doc.setFontSize(9.5); doc.setFont("helvetica","normal");
@@ -603,9 +606,9 @@
         doc.text(lbl + "  " + (val||"—"), right, metaY, {align:"right"});
         metaY += 14;
       }
-      metaLine("Invoice No:", $("invNumber").value.trim());
+      metaLine("Quote No:", $("invNumber").value.trim());
       metaLine("Issue date:", fmtDate($("issueDate").value));
-      metaLine("Due date:", fmtDate($("dueDate").value));
+      metaLine("Valid until:", fmtDate($("dueDate").value));
 
       // ----- From block (left) -----
       var fromY = Math.max(logoBottom + 18, y + 18);
@@ -625,10 +628,10 @@
 
       y = Math.max(fromY, metaY) + 18;
 
-      // ----- Bill To -----
+      // ----- Quote For -----
       doc.setFont("helvetica","bold"); doc.setFontSize(8.5);
       doc.setTextColor(MUTED[0],MUTED[1],MUTED[2]);
-      doc.text("BILL TO", M, y);
+      doc.text("QUOTE FOR", M, y);
       y += 14;
       doc.setFont("helvetica","bold"); doc.setFontSize(11);
       doc.setTextColor(DARK[0],DARK[1],DARK[2]);
@@ -740,8 +743,8 @@
       }
 
       // ----- Save -----
-      var fileNum = ($("invNumber").value.trim() || "invoice").replace(/[^\w.-]+/g,"_");
-      doc.save("invoice-" + fileNum + ".pdf");
+      var fileNum = ($("invNumber").value.trim() || "quote").replace(/[^\w.-]+/g,"_");
+      doc.save("quote-" + fileNum + ".pdf");
     }
 
     /* ---------- Wiring ---------- */
@@ -771,9 +774,9 @@
       $("downloadPdf").addEventListener("click", downloadPDF);
       $("printBtn").addEventListener("click", function(){ window.print(); });
       $("resetBtn").addEventListener("click", function(){
-        if (!confirm("Clear all fields and start a new invoice?")) return;
+        if (!confirm("Clear all fields and start a new quote?")) return;
         document.querySelectorAll(".editor input[type=text], .editor textarea").forEach(function(el){ el.value=""; });
-        $("invNumber").value = "INV-0001";
+        $("invNumber").value = "QUO-0001";
         $("taxRate").value = "0";
         $("taxLabel").value = "Tax";
         $("issueDate").value = todayISO();
