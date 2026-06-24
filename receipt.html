@@ -766,6 +766,7 @@
       // ----- Save -----
       var fileNum = ($("invNumber").value.trim() || "receipt").replace(/[^\w.-]+/g,"_");
       doc.save("receipt-" + fileNum + ".pdf");
+      if (typeof gtag === 'function') { gtag('event', 'invoice_download', { doc_type: 'receipt' }); }
     }
 
     /* ---------- Wiring ---------- */

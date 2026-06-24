@@ -754,6 +754,7 @@
       // ----- Save -----
       var fileNum = ($("invNumber").value.trim() || "invoice").replace(/[^\w.-]+/g,"_");
       doc.save("invoice-" + fileNum + ".pdf");
+      if (typeof gtag === 'function') { gtag('event', 'invoice_download', { doc_type: 'consultant' }); }
     }
 
     /* ---------- Wiring ---------- */
