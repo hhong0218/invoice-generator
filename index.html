@@ -124,6 +124,17 @@
     .seo p{color:var(--muted);margin-bottom:.6rem}
     .seo ul{color:var(--muted);margin:.3rem 0 .8rem 1.2rem}
     .seo li{margin-bottom:.25rem}
+    .guides-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.8rem;margin:.6rem 0 .4rem;list-style:none!important}
+    .guides-grid li{margin:0!important}
+    .guides-grid a{display:block;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:.8rem .9rem;box-shadow:var(--shadow);font-weight:600;color:var(--text)}
+    .guides-grid a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+    .guides-grid a span{display:block;font-weight:400;font-size:.82rem;color:var(--muted);margin-top:.2rem}
+    .faq details{border:1px solid var(--border);border-radius:10px;background:var(--panel);margin-bottom:.6rem;box-shadow:var(--shadow)}
+    .faq summary{cursor:pointer;padding:.85rem 1rem;font-weight:700;color:var(--text);list-style:none}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:"+";float:right;color:var(--accent);font-weight:700}
+    .faq details[open] summary::after{content:"–"}
+    .faq details p{padding:0 1rem 1rem;color:var(--muted);margin:0}
     footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem;background:var(--panel)}
 
     @media (max-width:900px){
@@ -151,7 +162,7 @@
   <header>
     <div class="header-inner">
       <a href="/" class="logo">Invoice<span>Maker</span></a>
-      <span class="header-tag">Free · Private · No signup</span>
+      <span class="header-tag"><a href="/guides/">Guides</a> &nbsp;·&nbsp; Free · Private · No signup</span>
     </div>
   </header>
 
@@ -335,6 +346,43 @@
 
       <h2>Is my data private? (yes — generated in your browser)</h2>
       <p>Yes. This invoice generator runs entirely in your browser. The details you type, the line items you add, and any logo you upload never leave your device — there is no account, no server upload, and no tracking of your invoice content. The PDF is built locally with the open-source jsPDF library and saved directly to your computer. Because nothing is stored, simply refresh the page when you're done and your information is gone.</p>
+
+      <h2 id="guides">Guides &amp; resources</h2>
+      <p>New to invoicing, or want to get paid faster? These short, practical guides walk you through the essentials:</p>
+      <ul class="guides-grid">
+        <li><a href="/guides/how-to-make-an-invoice.html">How to make an invoice<span>A simple step-by-step walkthrough.</span></a></li>
+        <li><a href="/guides/what-to-include-on-an-invoice.html">What to include on an invoice<span>Required fields, numbering &amp; payment terms.</span></a></li>
+        <li><a href="/guides/invoice-vs-receipt-vs-quote.html">Invoice vs. receipt vs. quote<span>What each is for and when to send it.</span></a></li>
+        <li><a href="/guides/how-to-get-paid-faster.html">How to get paid faster<span>Terms, payment options &amp; follow-ups.</span></a></li>
+      </ul>
+
+      <h2 id="faq">Frequently asked questions</h2>
+      <div class="faq">
+        <details open>
+          <summary>Is this invoice generator free?</summary>
+          <p>Yes, it's completely free. There's no trial, no paywall, and no limit on how many invoices you can create or download.</p>
+        </details>
+        <details>
+          <summary>Is my data private?</summary>
+          <p>Yes. Everything runs in your browser. The details you enter and any logo you upload are never sent to a server — there's no account and no storage of your invoice content. Refresh the page and the data is gone.</p>
+        </details>
+        <details>
+          <summary>Can I add my logo?</summary>
+          <p>Yes. Use the "Logo (optional)" upload in the editor to add your own logo. It appears in the live preview and in the downloaded PDF, and it stays on your device.</p>
+        </details>
+        <details>
+          <summary>What file format do I get?</summary>
+          <p>You can download a print-ready <strong>PDF</strong>, which looks identical on every device and can't be accidentally edited. You can also use the Print button to print directly or save as PDF through your browser.</p>
+        </details>
+        <details>
+          <summary>Do I need to create an account?</summary>
+          <p>No. There's no sign-up, login, or email required. Open the page and start creating an invoice immediately.</p>
+        </details>
+        <details>
+          <summary>Can I use these invoices for taxes and bookkeeping?</summary>
+          <p>The invoices include the standard fields businesses use for record-keeping — invoice number, dates, line items, tax, and totals. They're suitable for your own bookkeeping, but this tool isn't tax advice; check the requirements for your country or consult an accountant if you're unsure.</p>
+        </details>
+      </div>
     </section>
   </main>
 
@@ -793,6 +841,46 @@
     if (document.readyState === "loading"){
       document.addEventListener("DOMContentLoaded", init);
     } else { init(); }
+  </script>
+
+  <!-- FAQ structured data for rich results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is this invoice generator free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, it's completely free. There's no trial, no paywall, and no limit on how many invoices you can create or download." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my data private?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Everything runs in your browser. The details you enter and any logo you upload are never sent to a server — there's no account and no storage of your invoice content. Refresh the page and the data is gone." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I add my logo?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the logo upload in the editor to add your own logo. It appears in the live preview and in the downloaded PDF, and it stays on your device." }
+      },
+      {
+        "@type": "Question",
+        "name": "What file format do I get?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You can download a print-ready PDF, which looks identical on every device and can't be accidentally edited. You can also use the Print button to print directly or save as PDF through your browser." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to create an account?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. There's no sign-up, login, or email required. Open the page and start creating an invoice immediately." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use these invoices for taxes and bookkeeping?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The invoices include the standard fields businesses use for record-keeping — invoice number, dates, line items, tax, and totals. They're suitable for your own bookkeeping, but this tool isn't tax advice; check the requirements for your country or consult an accountant if you're unsure." }
+      }
+    ]
+  }
   </script>
 </body>
 </html>

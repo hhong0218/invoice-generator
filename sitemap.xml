@@ -7,4 +7,9 @@
   <url><loc>https://invoice.quietools.com/freelance-invoice</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://invoice.quietools.com/consultant-invoice</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://invoice.quietools.com/contractor-invoice</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://invoice.quietools.com/guides/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://invoice.quietools.com/guides/how-to-make-an-invoice.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://invoice.quietools.com/guides/what-to-include-on-an-invoice.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://invoice.quietools.com/guides/invoice-vs-receipt-vs-quote.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://invoice.quietools.com/guides/how-to-get-paid-faster.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
