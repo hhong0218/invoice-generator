@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://invoice.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Tax Calculator — Free US State Sales Tax Estimator | InvoiceMaker</title>
+  <link rel="canonical" href="https://invoice.quietools.com/sales-tax-calculator">
+  <meta property="og:url" content="https://invoice.quietools.com/sales-tax-calculator">
+  <meta name="description" content="Free sales tax calculator for all 50 US states + DC. Enter a subtotal and state to estimate sales tax and total, or reverse-calculate the pre-tax amount from a total. Runs entirely in your browser.">
+  <meta name="keywords" content="sales tax calculator, state sales tax rates, reverse sales tax calculator, sales tax by state, calculate sales tax">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Sales Tax Calculator — Free US State Sales Tax Estimator">
+  <meta property="og:image" content="https://invoice.quietools.com/og-image.jpg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta name="twitter:image" content="https://invoice.quietools.com/og-image.jpg">
+  <meta property="og:description" content="Estimate US sales tax by state, or back out the pre-tax subtotal from a tax-inclusive total. Free, instant, no signup — everything runs in your browser.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{
+      --bg:#f4f6fb;--panel:#ffffff;--border:#e2e6ee;--text:#1f2733;--muted:#6b7686;
+      --accent:#2563eb;--accent-dark:#1d4ed8;--accent-soft:#eaf1ff;--ok:#16a34a;--shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04)
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;background:var(--panel);position:sticky;top:0;z-index:20;box-shadow:var(--shadow)}
+    .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:800;color:var(--text);letter-spacing:-.02em}
+    .logo span{color:var(--accent)}
+    .header-tag{font-size:.85rem;color:var(--muted)}
+    main{max-width:1200px;margin:0 auto;padding:1.5rem}
+    h1{font-size:1.7rem;margin-bottom:.4rem;letter-spacing:-.02em}
+    .lead{color:var(--muted);margin-bottom:1.25rem;max-width:760px}
+    .ad-slot{margin:1.25rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:10px;background:var(--panel)}
+
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem;align-items:start}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}
+    .editor{padding:1.25rem}
+    .preview-col{position:sticky;top:84px}
+
+    .section-title{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:1.25rem 0 .6rem}
+    .section-title:first-child{margin-top:0}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+    .field{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.75rem}
+    .field.full{grid-column:1 / -1}
+    label{font-size:.82rem;font-weight:600;color:var(--text)}
+    input,textarea,select{width:100%;background:#fff;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:.55rem .65rem;font-size:.9rem;font-family:inherit;transition:.15s}
+    input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+    select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7686' d='M6 8 0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .65rem center;padding-right:1.8rem}
+
+    .mode-toggle{display:flex;gap:.5rem;margin-bottom:1.1rem;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.3rem}
+    .mode-toggle button{flex:1;background:transparent;border:none;border-radius:8px;padding:.55rem .5rem;font-size:.85rem;font-weight:700;color:var(--muted);cursor:pointer;transition:.15s}
+    .mode-toggle button.active{background:var(--accent);color:#fff}
+
+    button{background:#fff;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:.55rem 1rem;font-size:.9rem;font-weight:600;cursor:pointer;transition:.15s;font-family:inherit}
+    button:hover{border-color:var(--accent);color:var(--accent)}
+    button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+    button.primary:hover{background:var(--accent-dark);color:#fff}
+
+    /* Result panel */
+    .preview-head{display:flex;justify-content:space-between;align-items:center;padding:.85rem 1.1rem;border-bottom:1px solid var(--border)}
+    .preview-head h2{font-size:.95rem;font-weight:700}
+    .preview-head .hint{font-size:.78rem;color:var(--muted)}
+    .result{padding:1.6rem}
+    .result-big{text-align:center;padding:1.4rem 1rem;background:var(--accent-soft);border-radius:12px;margin-bottom:1.2rem}
+    .result-big .label{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;margin-bottom:.3rem}
+    .result-big .value{font-size:2.1rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+    .result-rows .row{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid var(--border);font-size:.92rem}
+    .result-rows .row:last-child{border-bottom:none}
+    .result-rows .row .v{font-variant-numeric:tabular-nums;font-weight:700}
+    .rate-note{margin-top:1.2rem;padding:.9rem 1rem;background:#fff8e6;border:1px solid #f2dfa0;border-radius:10px;font-size:.84rem;color:#7a5c00}
+    .rate-note strong{color:#5c4400}
+
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem;max-width:820px}
+    .seo h2{font-size:1.25rem;margin:1.5rem 0 .5rem;letter-spacing:-.01em}
+    .seo p{color:var(--muted);margin-bottom:.6rem}
+    .seo ul{color:var(--muted);margin:.3rem 0 .8rem 1.2rem}
+    .seo li{margin-bottom:.25rem}
+    .seo table{width:100%;border-collapse:collapse;margin:.6rem 0 1.2rem;font-size:.88rem}
+    .seo table th,.seo table td{border:1px solid var(--border);padding:.5rem .6rem;text-align:left}
+    .seo table th{background:var(--accent-soft);font-weight:700;color:var(--text)}
+    .seo table td{color:var(--muted)}
+    .source-note{font-size:.78rem;color:var(--muted);margin-top:.5rem;font-style:italic}
+    .faq details{border:1px solid var(--border);border-radius:10px;background:var(--panel);margin-bottom:.6rem;box-shadow:var(--shadow)}
+    .faq summary{cursor:pointer;padding:.85rem 1rem;font-weight:700;color:var(--text);list-style:none}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:"+";float:right;color:var(--accent);font-weight:700}
+    .faq details[open] summary::after{content:"–"}
+    .faq details p{padding:0 1rem 1rem;color:var(--muted);margin:0}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem;background:var(--panel)}
+
+    @media (max-width:900px){
+      .layout{grid-template-columns:1fr}
+      .preview-col{position:static}
+    }
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2324533526355362" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/" class="logo">Invoice<span>Maker</span></a>
+      <span class="header-tag"><a href="/guides/">Guides</a> &nbsp;·&nbsp; Free · Private · No signup</span>
+    </div>
+  </header>
+
+  <main>
+    <h1>Sales Tax Calculator</h1>
+    <p class="lead">Estimate US sales tax by state. Enter a subtotal to see the tax amount and total — or flip to reverse mode and back out the pre-tax subtotal from a tax-inclusive total. Everything runs in your browser; nothing is uploaded.</p>
+
+    <p style="color:var(--muted);font-size:.92rem;margin:-.25rem 0 1.1rem">Free calculators: <strong>Sales tax</strong> · <a href="/profit-margin-calculator">Profit margin</a> · <a href="/hourly-rate-calculator">Hourly rate</a> · <a href="/vat-calculator">VAT</a> &nbsp;·&nbsp; also: <a href="/">Invoice generator</a></p>
+
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="layout">
+      <!-- ============ EDITOR ============ -->
+      <section class="card editor" aria-label="Sales tax calculator inputs">
+        <div class="mode-toggle" role="tablist">
+          <button type="button" id="modeForward" class="active" role="tab" aria-selected="true">I have a subtotal</button>
+          <button type="button" id="modeReverse" role="tab" aria-selected="false">I have a total (reverse)</button>
+        </div>
+
+        <div class="field" id="fieldSubtotal">
+          <label for="subtotal">Subtotal (before tax)</label>
+          <input id="subtotal" type="number" min="0" step="0.01" value="100" inputmode="decimal">
+        </div>
+        <div class="field" id="fieldTotal" style="display:none">
+          <label for="totalAmt">Total (tax included)</label>
+          <input id="totalAmt" type="number" min="0" step="0.01" value="107.25" inputmode="decimal">
+        </div>
+
+        <div class="field">
+          <label for="stateSel">State</label>
+          <select id="stateSel"></select>
+        </div>
+
+        <div class="rate-note" id="rateNote"></div>
+      </section>
+
+      <!-- ============ RESULT ============ -->
+      <div class="preview-col">
+        <div class="card">
+          <div class="preview-head">
+            <h2>Result</h2>
+            <span class="hint">Updates as you type</span>
+          </div>
+          <div class="result">
+            <div class="result-big">
+              <div class="label" id="resultLabel">Estimated sales tax</div>
+              <div class="value" id="resultValue">$0.00</div>
+            </div>
+            <div class="result-rows">
+              <div class="row" id="rowSubtotal"><span>Subtotal</span><span class="v" id="vSubtotal">$0.00</span></div>
+              <div class="row"><span id="rowTaxLabel">Sales tax</span><span class="v" id="vTax">$0.00</span></div>
+              <div class="row" id="rowTotal"><span>Total</span><span class="v" id="vTotal">$0.00</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-slot">Advertisement</div>
+
+    <section class="seo">
+      <h2>What is this sales tax calculator?</h2>
+      <p>This tool estimates US sales tax using each state's <strong>state-level base rate</strong> — the tax set by the state government itself. Pick a state, enter a subtotal, and the calculator multiplies it by that state's rate to show the tax amount and the total you'd pay. Switch to reverse mode to do the opposite: enter a total that already includes tax, and the calculator divides out the tax to show what the pre-tax subtotal must have been.</p>
+
+      <h2>How it's calculated</h2>
+      <p>Forward mode: <strong>Tax = Subtotal × State rate</strong>, and <strong>Total = Subtotal + Tax</strong>.</p>
+      <p>Reverse mode: <strong>Subtotal = Total ÷ (1 + State rate)</strong>, and <strong>Tax = Total − Subtotal</strong>. This correctly "un-does" the tax rather than just subtracting a percentage of the total, which would overstate the tax removed.</p>
+
+      <h2>Important: this is a state base rate, not your local rate</h2>
+      <p><strong>Actual sales tax almost always differs from the state base rate.</strong> Most states allow counties, cities, and special districts to add their own local sales tax on top of the state rate. Combined state + local rates can run several percentage points higher than the state rate alone — in some high-tax jurisdictions the combined rate exceeds 10%, even when the state base rate is much lower. This calculator gives you a quick starting estimate using the state-level rate only. For an exact rate, check your specific city/county using your state's department of revenue lookup tool or a point-of-sale tax service, especially before quoting a customer or filing a return.</p>
+
+      <h2>US state base sales tax rates (2026)</h2>
+      <p>State-level rates only — local city/county/district taxes are added on top in most states and are not included below.</p>
+      <table id="rateTable">
+        <thead><tr><th>State</th><th>Base rate</th><th>State</th><th>Base rate</th></tr></thead>
+        <tbody id="rateTableBody"></tbody>
+      </table>
+      <p class="source-note" id="sourceNote"></p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+      <div class="faq">
+        <details open>
+          <summary>Is this the exact sales tax I'll pay at checkout?</summary>
+          <p>Not necessarily. This calculator uses each state's base rate only. Most states let counties and cities add local sales tax on top, so your actual checkout rate is often higher than what's shown here. Use this as a quick estimate, then confirm the exact local rate for a specific address if precision matters (e.g., for invoicing or tax filing).</p>
+        </details>
+        <details>
+          <summary>Why do some states show 0%?</summary>
+          <p>Alaska, Delaware, Montana, New Hampshire, and Oregon have no state-level sales tax. Alaska does allow some local jurisdictions to levy their own local sales tax even though the state rate is 0%, so a small local tax can still apply there.</p>
+        </details>
+        <details>
+          <summary>How does the reverse calculation work?</summary>
+          <p>If you only know a tax-inclusive total (for example, a total you already charged a customer), the calculator divides by <code>(1 + rate)</code> rather than just subtracting a flat percentage. This correctly isolates the original pre-tax subtotal and the exact tax dollar amount, avoiding a common rounding mistake.</p>
+        </details>
+        <details>
+          <summary>Is my data uploaded anywhere?</summary>
+          <p>No. This calculator runs entirely in your browser using plain JavaScript. Nothing you enter is sent to a server, stored, or tracked beyond standard anonymous analytics.</p>
+        </details>
+        <details>
+          <summary>Is this tax advice?</summary>
+          <p>No. This tool provides a general estimate for planning and quoting purposes only. Sales tax rules (what's taxable, exemptions, nexus, filing frequency) vary by state and by product or service type. Consult your state's department of revenue or a tax professional for compliance-grade numbers.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>InvoiceMaker — free browser-based invoice generator &amp; business calculators. Everything runs locally; nothing is uploaded.</p></footer>
+
+  <script>
+    "use strict";
+
+    /* ---------- Data: US state base sales tax rates ---------- */
+    /* Source: Tax Foundation, "State and Local Sales Tax Rates", state-level column only, data as of January 1, 2026. */
+    /* https://taxfoundation.org/data/all/state/sales-tax-rates/ */
+    var SOURCE_NAME = "Tax Foundation";
+    var SOURCE_URL = "https://taxfoundation.org/data/all/state/sales-tax-rates/";
+    var SOURCE_DATE = "January 1, 2026";
+
+    var STATES = [
+      {n:"Alabama", r:4.00},
+      {n:"Alaska", r:0.00},
+      {n:"Arizona", r:5.60},
+      {n:"Arkansas", r:6.50},
+      {n:"California", r:7.25},
+      {n:"Colorado", r:2.90},
+      {n:"Connecticut", r:6.35},
+      {n:"Delaware", r:0.00},
+      {n:"District of Columbia", r:6.00},
+      {n:"Florida", r:6.00},
+      {n:"Georgia", r:4.00},
+      {n:"Hawaii", r:4.00},
+      {n:"Idaho", r:6.00},
+      {n:"Illinois", r:6.25},
+      {n:"Indiana", r:7.00},
+      {n:"Iowa", r:6.00},
+      {n:"Kansas", r:6.50},
+      {n:"Kentucky", r:6.00},
+      {n:"Louisiana", r:5.00},
+      {n:"Maine", r:5.50},
+      {n:"Maryland", r:6.00},
+      {n:"Massachusetts", r:6.25},
+      {n:"Michigan", r:6.00},
+      {n:"Minnesota", r:6.875},
+      {n:"Mississippi", r:7.00},
+      {n:"Missouri", r:4.225},
+      {n:"Montana", r:0.00},
+      {n:"Nebraska", r:5.50},
+      {n:"Nevada", r:6.85},
+      {n:"New Hampshire", r:0.00},
+      {n:"New Jersey", r:6.625},
+      {n:"New Mexico", r:4.875},
+      {n:"New York", r:4.00},
+      {n:"North Carolina", r:4.75},
+      {n:"North Dakota", r:5.00},
+      {n:"Ohio", r:5.75},
+      {n:"Oklahoma", r:4.50},
+      {n:"Oregon", r:0.00},
+      {n:"Pennsylvania", r:6.00},
+      {n:"Rhode Island", r:7.00},
+      {n:"South Carolina", r:6.00},
+      {n:"South Dakota", r:4.20},
+      {n:"Tennessee", r:7.00},
+      {n:"Texas", r:6.25},
+      {n:"Utah", r:6.10},
+      {n:"Vermont", r:6.00},
+      {n:"Virginia", r:5.30},
+      {n:"Washington", r:6.50},
+      {n:"West Virginia", r:6.00},
+      {n:"Wisconsin", r:5.00},
+      {n:"Wyoming", r:4.00}
+    ];
+
+    var $ = function(id){ return document.getElementById(id); };
+    var mode = "forward"; // or "reverse"
+
+    function fmtMoney(n){
+      var num = isFinite(n) ? n : 0;
+      var neg = num < 0;
+      var s = Math.abs(num).toLocaleString("en-US", {minimumFractionDigits:2, maximumFractionDigits:2});
+      return (neg ? "-$" : "$") + s;
+    }
+    function num(v){ var n = parseFloat(v); return isFinite(n) ? n : 0; }
+    function trimRate(r){
+      return (r === Math.round(r)) ? String(r) : String(Math.round(r*1000)/1000);
+    }
+    function currentRate(){
+      var idx = $("stateSel").selectedIndex;
+      var st = STATES[idx] || STATES[0];
+      return st.r / 100;
+    }
+
+    function render(){
+      var st = STATES[$("stateSel").selectedIndex] || STATES[0];
+      var rate = st.r / 100;
+
+      $("rateNote").innerHTML = "<strong>" + esc(st.n) + "</strong> base state sales tax rate: <strong>" + trimRate(st.r) + "%</strong>. Local county/city taxes are usually added on top and are not included in this rate — see the disclaimer below.";
+
+      var subtotal, tax, total;
+      if (mode === "forward"){
+        subtotal = num($("subtotal").value);
+        tax = subtotal * rate;
+        total = subtotal + tax;
+        $("resultLabel").textContent = "Estimated sales tax";
+        $("resultValue").textContent = fmtMoney(tax);
+        $("rowTaxLabel").textContent = "Sales tax (" + trimRate(st.r) + "%)";
+        $("rowSubtotal").style.display = "flex";
+        $("rowTotal").querySelector("span").textContent = "Total";
+      } else {
+        total = num($("totalAmt").value);
+        subtotal = rate > 0 ? (total / (1 + rate)) : total;
+        tax = total - subtotal;
+        $("resultLabel").textContent = "Pre-tax subtotal";
+        $("resultValue").textContent = fmtMoney(subtotal);
+        $("rowTaxLabel").textContent = "Sales tax (" + trimRate(st.r) + "%)";
+        $("rowSubtotal").style.display = "flex";
+      }
+      $("vSubtotal").textContent = fmtMoney(subtotal);
+      $("vTax").textContent = fmtMoney(tax);
+      $("vTotal").textContent = fmtMoney(total);
+
+      if (typeof gtag === 'function'){
+        gtag('event', 'sales_tax_calc', { state: st.n, mode: mode });
+      }
+    }
+    function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+    function setMode(next){
+      mode = next;
+      $("modeForward").classList.toggle("active", mode==="forward");
+      $("modeForward").setAttribute("aria-selected", mode==="forward");
+      $("modeReverse").classList.toggle("active", mode==="reverse");
+      $("modeReverse").setAttribute("aria-selected", mode==="reverse");
+      $("fieldSubtotal").style.display = mode==="forward" ? "" : "none";
+      $("fieldTotal").style.display = mode==="reverse" ? "" : "none";
+      render();
+    }
+
+    function buildRateTable(){
+      var sorted = STATES.slice().sort(function(a,b){ return a.n.localeCompare(b.n); });
+      var half = Math.ceil(sorted.length/2);
+      var left = sorted.slice(0, half), right = sorted.slice(half);
+      var html = "";
+      for (var i=0;i<left.length;i++){
+        var l = left[i], r = right[i];
+        html += "<tr><td>" + esc(l.n) + "</td><td>" + trimRate(l.r) + "%</td>";
+        if (r) html += "<td>" + esc(r.n) + "</td><td>" + trimRate(r.r) + "%</td>";
+        else html += "<td></td><td></td>";
+        html += "</tr>";
+      }
+      $("rateTableBody").innerHTML = html;
+    }
+
+    function init(){
+      var sel = $("stateSel");
+      for (var i=0;i<STATES.length;i++){
+        var o = document.createElement("option");
+        o.value = STATES[i].n; o.textContent = STATES[i].n + " — " + trimRate(STATES[i].r) + "%";
+        sel.appendChild(o);
+      }
+      // Default to California to showcase a non-zero example
+      sel.value = "California";
+
+      buildRateTable();
+      $("sourceNote").textContent = "State base rates as of " + SOURCE_DATE + ", source: " + SOURCE_NAME + " (" + SOURCE_URL + ").";
+
+      $("modeForward").addEventListener("click", function(){ setMode("forward"); });
+      $("modeReverse").addEventListener("click", function(){ setMode("reverse"); });
+      $("subtotal").addEventListener("input", render);
+      $("totalAmt").addEventListener("input", render);
+      sel.addEventListener("change", render);
+
+      render();
+    }
+
+    if (document.readyState === "loading"){
+      document.addEventListener("DOMContentLoaded", init);
+    } else { init(); }
+  </script>
+
+  <!-- FAQ structured data for rich results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is this the exact sales tax I'll pay at checkout?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily. This calculator uses each state's base rate only. Most states let counties and cities add local sales tax on top, so your actual checkout rate is often higher than what's shown here. Use this as a quick estimate, then confirm the exact local rate for a specific address if precision matters." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do some states show 0%?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Alaska, Delaware, Montana, New Hampshire, and Oregon have no state-level sales tax. Alaska does allow some local jurisdictions to levy their own local sales tax even though the state rate is 0%, so a small local tax can still apply there." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the reverse calculation work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If you only know a tax-inclusive total, the calculator divides by (1 + rate) rather than subtracting a flat percentage. This correctly isolates the original pre-tax subtotal and the exact tax dollar amount, avoiding a common rounding mistake." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my data uploaded anywhere?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. This calculator runs entirely in your browser using plain JavaScript. Nothing you enter is sent to a server, stored, or tracked beyond standard anonymous analytics." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this tax advice?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. This tool provides a general estimate for planning and quoting purposes only. Sales tax rules vary by state and by product or service type. Consult your state's department of revenue or a tax professional for compliance-grade numbers." }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://invoice.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profit Margin Calculator — Margin, Markup &amp; Selling Price | InvoiceMaker</title>
+  <link rel="canonical" href="https://invoice.quietools.com/profit-margin-calculator">
+  <meta property="og:url" content="https://invoice.quietools.com/profit-margin-calculator">
+  <meta name="description" content="Free profit margin calculator. Enter cost and price to get margin % and markup %, or enter cost and a target margin to find the price you need to charge. Clear explanation of margin vs markup.">
+  <meta name="keywords" content="profit margin calculator, markup calculator, margin vs markup, gross margin calculator, pricing calculator, how to calculate profit margin">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Profit Margin Calculator — Margin, Markup &amp; Selling Price">
+  <meta property="og:image" content="https://invoice.quietools.com/og-image.jpg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta name="twitter:image" content="https://invoice.quietools.com/og-image.jpg">
+  <meta property="og:description" content="Calculate profit margin and markup from cost and price, or find the selling price you need to hit a target margin. Free, instant, no signup — everything runs in your browser.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{
+      --bg:#f4f6fb;--panel:#ffffff;--border:#e2e6ee;--text:#1f2733;--muted:#6b7686;
+      --accent:#2563eb;--accent-dark:#1d4ed8;--accent-soft:#eaf1ff;--ok:#16a34a;--shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04)
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;background:var(--panel);position:sticky;top:0;z-index:20;box-shadow:var(--shadow)}
+    .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:800;color:var(--text);letter-spacing:-.02em}
+    .logo span{color:var(--accent)}
+    .header-tag{font-size:.85rem;color:var(--muted)}
+    main{max-width:1200px;margin:0 auto;padding:1.5rem}
+    h1{font-size:1.7rem;margin-bottom:.4rem;letter-spacing:-.02em}
+    .lead{color:var(--muted);margin-bottom:1.25rem;max-width:760px}
+    .ad-slot{margin:1.25rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:10px;background:var(--panel)}
+
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem;align-items:start}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}
+    .editor{padding:1.25rem}
+    .preview-col{position:sticky;top:84px}
+
+    .field{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.75rem}
+    label{font-size:.82rem;font-weight:600;color:var(--text)}
+    input,select{width:100%;background:#fff;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:.55rem .65rem;font-size:.9rem;font-family:inherit;transition:.15s}
+    input:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+
+    .mode-toggle{display:flex;gap:.5rem;margin-bottom:1.1rem;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.3rem}
+    .mode-toggle button{flex:1;background:transparent;border:none;border-radius:8px;padding:.55rem .5rem;font-size:.85rem;font-weight:700;color:var(--muted);cursor:pointer;transition:.15s}
+    .mode-toggle button.active{background:var(--accent);color:#fff}
+
+    button{background:#fff;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:.55rem 1rem;font-size:.9rem;font-weight:600;cursor:pointer;transition:.15s;font-family:inherit}
+    button:hover{border-color:var(--accent);color:var(--accent)}
+
+    .preview-head{display:flex;justify-content:space-between;align-items:center;padding:.85rem 1.1rem;border-bottom:1px solid var(--border)}
+    .preview-head h2{font-size:.95rem;font-weight:700}
+    .preview-head .hint{font-size:.78rem;color:var(--muted)}
+    .result{padding:1.6rem}
+    .result-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.2rem}
+    .result-big{text-align:center;padding:1.2rem .8rem;background:var(--accent-soft);border-radius:12px}
+    .result-big.alt{background:#eafaf0}
+    .result-big .label{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;margin-bottom:.3rem}
+    .result-big .value{font-size:1.7rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+    .result-big.alt .value{color:var(--ok)}
+    .result-rows .row{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid var(--border);font-size:.92rem}
+    .result-rows .row:last-child{border-bottom:none}
+    .result-rows .row .v{font-variant-numeric:tabular-nums;font-weight:700}
+
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem;max-width:820px}
+    .seo h2{font-size:1.25rem;margin:1.5rem 0 .5rem;letter-spacing:-.01em}
+    .seo p{color:var(--muted);margin-bottom:.6rem}
+    .seo ul{color:var(--muted);margin:.3rem 0 .8rem 1.2rem}
+    .seo li{margin-bottom:.25rem}
+    .seo table{width:100%;border-collapse:collapse;margin:.6rem 0 1.2rem;font-size:.9rem}
+    .seo table th,.seo table td{border:1px solid var(--border);padding:.55rem .7rem;text-align:left}
+    .seo table th{background:var(--accent-soft);font-weight:700;color:var(--text)}
+    .seo table td{color:var(--muted)}
+    .faq details{border:1px solid var(--border);border-radius:10px;background:var(--panel);margin-bottom:.6rem;box-shadow:var(--shadow)}
+    .faq summary{cursor:pointer;padding:.85rem 1rem;font-weight:700;color:var(--text);list-style:none}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:"+";float:right;color:var(--accent);font-weight:700}
+    .faq details[open] summary::after{content:"–"}
+    .faq details p{padding:0 1rem 1rem;color:var(--muted);margin:0}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem;background:var(--panel)}
+
+    @media (max-width:900px){
+      .layout{grid-template-columns:1fr}
+      .preview-col{position:static}
+      .result-grid{grid-template-columns:1fr}
+    }
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2324533526355362" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/" class="logo">Invoice<span>Maker</span></a>
+      <span class="header-tag"><a href="/guides/">Guides</a> &nbsp;·&nbsp; Free · Private · No signup</span>
+    </div>
+  </header>
+
+  <main>
+    <h1>Profit Margin Calculator</h1>
+    <p class="lead">Work out your profit margin and markup from cost and price, or find the selling price you need to hit a target margin. Everything runs in your browser — nothing is uploaded.</p>
+
+    <p style="color:var(--muted);font-size:.92rem;margin:-.25rem 0 1.1rem">Free calculators: <a href="/sales-tax-calculator">Sales tax</a> · <strong>Profit margin</strong> · <a href="/hourly-rate-calculator">Hourly rate</a> · <a href="/vat-calculator">VAT</a> &nbsp;·&nbsp; also: <a href="/">Invoice generator</a></p>
+
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="layout">
+      <!-- ============ EDITOR ============ -->
+      <section class="card editor" aria-label="Profit margin calculator inputs">
+        <div class="mode-toggle" role="tablist">
+          <button type="button" id="modePrice" class="active" role="tab" aria-selected="true">I know my price</button>
+          <button type="button" id="modeMargin" role="tab" aria-selected="false">I know my target margin</button>
+        </div>
+
+        <div class="field">
+          <label for="cost">Cost per unit ($)</label>
+          <input id="cost" type="number" min="0" step="0.01" value="60" inputmode="decimal">
+        </div>
+
+        <div class="field" id="fieldPrice">
+          <label for="price">Selling price per unit ($)</label>
+          <input id="price" type="number" min="0" step="0.01" value="100" inputmode="decimal">
+        </div>
+        <div class="field" id="fieldMargin" style="display:none">
+          <label for="targetMargin">Target profit margin (%)</label>
+          <input id="targetMargin" type="number" min="0" max="99.99" step="0.1" value="40" inputmode="decimal">
+        </div>
+      </section>
+
+      <!-- ============ RESULT ============ -->
+      <div class="preview-col">
+        <div class="card">
+          <div class="preview-head">
+            <h2>Result</h2>
+            <span class="hint">Updates as you type</span>
+          </div>
+          <div class="result">
+            <div class="result-grid">
+              <div class="result-big" id="boxMargin">
+                <div class="label">Profit margin</div>
+                <div class="value" id="vMarginPct">0%</div>
+              </div>
+              <div class="result-big alt" id="boxMarkup">
+                <div class="label">Markup</div>
+                <div class="value" id="vMarkupPct">0%</div>
+              </div>
+            </div>
+            <div class="result-rows">
+              <div class="row"><span>Cost per unit</span><span class="v" id="vCost">$0.00</span></div>
+              <div class="row"><span id="rowPriceLabel">Selling price per unit</span><span class="v" id="vPrice">$0.00</span></div>
+              <div class="row"><span>Profit per unit</span><span class="v" id="vProfit">$0.00</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-slot">Advertisement</div>
+
+    <section class="seo">
+      <h2>What is a profit margin calculator?</h2>
+      <p>This calculator works out how much of your selling price is actual profit, using your cost and price per unit. Toggle between two modes: <strong>"I know my price"</strong> calculates the margin and markup you're already getting, while <strong>"I know my target margin"</strong> works backward to tell you the exact price you need to charge to hit a specific margin goal.</p>
+
+      <h2>How it's calculated</h2>
+      <p>The two formulas below use the standard, universally accepted definitions of margin and markup:</p>
+      <ul>
+        <li><strong>Profit margin (%) = (Price − Cost) ÷ Price × 100</strong> — profit as a percentage of the <em>selling price</em>.</li>
+        <li><strong>Markup (%) = (Price − Cost) ÷ Cost × 100</strong> — profit as a percentage of the <em>cost</em>.</li>
+        <li><strong>Required price (from cost + target margin) = Cost ÷ (1 − Target margin ÷ 100)</strong>.</li>
+      </ul>
+      <p>Worked example: a product costs <strong>$60</strong> and sells for <strong>$100</strong>. Profit is $40. Margin = $40 ÷ $100 = <strong>40%</strong>. Markup = $40 ÷ $60 = <strong>66.7%</strong>. Same $40 profit, two different percentages — because they're measured against two different bases.</p>
+
+      <h2>Profit margin vs. markup: what's the difference?</h2>
+      <p>Margin and markup are the single most confused pair of numbers in small-business pricing, because they use the same profit dollar amount but divide it by different things:</p>
+      <table>
+        <thead><tr><th></th><th>Profit margin</th><th>Markup</th></tr></thead>
+        <tbody>
+          <tr><td>Measures profit as a % of</td><td>Selling price</td><td>Cost</td></tr>
+          <tr><td>Formula</td><td>(Price − Cost) ÷ Price</td><td>(Price − Cost) ÷ Cost</td></tr>
+          <tr><td>Always smaller than the other?</td><td>Yes — margin % is always lower than markup % (for any profitable price)</td><td>Yes — markup % is always higher than margin %</td></tr>
+          <tr><td>Common use</td><td>Profitability reporting, comparing to industry benchmarks</td><td>Setting a price from a known cost ("cost-plus" pricing)</td></tr>
+        </tbody>
+      </table>
+      <p>The mistake people make most often: assuming a "50% markup" and a "50% margin" produce the same price. They don't. A 50% markup on a $60 cost gives a $90 price (margin ≈ 33%). A 50% margin on a $60 cost requires a $120 price (markup = 100%). Always double-check which one you — or a client, spreadsheet, or supplier — actually mean.</p>
+
+      <h2>Why this matters for pricing</h2>
+      <p>If you set prices using markup but report profitability using margin (or vice versa), your numbers can look far healthier or worse than reality. A 100% markup sounds impressive, but it's "only" a 50% margin — still good, but the two labels can create very different expectations in a conversation with a partner, investor, or accountant. Knowing both, and which one a given context refers to, avoids costly misunderstandings.</p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+      <div class="faq">
+        <details open>
+          <summary>What's the difference between margin and markup?</summary>
+          <p>Margin divides profit by the selling price; markup divides profit by the cost. For the same $40 profit on a $60 cost / $100 price item, margin is 40% and markup is 66.7%. Margin is always the smaller number of the two (for a profitable price).</p>
+        </details>
+        <details>
+          <summary>How do I calculate profit margin from cost and price?</summary>
+          <p>Subtract cost from price to get profit, then divide profit by price and multiply by 100: Margin % = (Price − Cost) ÷ Price × 100.</p>
+        </details>
+        <details>
+          <summary>What price should I charge for a target margin?</summary>
+          <p>Use Price = Cost ÷ (1 − Target margin ÷ 100). For example, to hit a 25% margin on a $60 cost: 60 ÷ (1 − 0.25) = 60 ÷ 0.75 = $80.</p>
+        </details>
+        <details>
+          <summary>Is a higher margin always better?</summary>
+          <p>Higher margin generally means more profit per sale, but the right margin depends on your industry, competition, and volume. Retail and manufacturing often run thinner margins with high volume; services and software often support much higher margins. Compare against typical figures for your specific industry rather than a single universal target.</p>
+        </details>
+        <details>
+          <summary>Is my data uploaded anywhere?</summary>
+          <p>No. This calculator runs entirely in your browser using plain JavaScript. Nothing you enter is sent to a server or stored.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>InvoiceMaker — free browser-based invoice generator &amp; business calculators. Everything runs locally; nothing is uploaded.</p></footer>
+
+  <script>
+    "use strict";
+    var $ = function(id){ return document.getElementById(id); };
+    var mode = "price"; // or "margin"
+
+    function num(v){ var n = parseFloat(v); return isFinite(n) ? n : 0; }
+    function fmtMoney(n){
+      var num2 = isFinite(n) ? n : 0;
+      return "$" + num2.toLocaleString("en-US", {minimumFractionDigits:2, maximumFractionDigits:2});
+    }
+    function fmtPct(n){
+      if (!isFinite(n)) return "—";
+      return (Math.round(n*100)/100).toLocaleString("en-US", {maximumFractionDigits:2}) + "%";
+    }
+
+    function render(){
+      var cost = num($("cost").value);
+      var price, marginPct, markupPct, profit;
+
+      if (mode === "price"){
+        price = num($("price").value);
+        profit = price - cost;
+        marginPct = price > 0 ? (profit / price) * 100 : 0;
+        markupPct = cost > 0 ? (profit / cost) * 100 : 0;
+        $("rowPriceLabel").textContent = "Selling price per unit";
+      } else {
+        var targetMargin = num($("targetMargin").value);
+        // clamp to avoid divide-by-zero / negative price for margin >= 100
+        var clamped = Math.min(Math.max(targetMargin, 0), 99.9999);
+        price = clamped < 100 ? (cost / (1 - clamped/100)) : NaN;
+        profit = price - cost;
+        marginPct = targetMargin;
+        markupPct = cost > 0 ? (profit / cost) * 100 : 0;
+        $("rowPriceLabel").textContent = "Required selling price";
+      }
+
+      $("vMarginPct").textContent = fmtPct(marginPct);
+      $("vMarkupPct").textContent = fmtPct(markupPct);
+      $("vCost").textContent = fmtMoney(cost);
+      $("vPrice").textContent = isFinite(price) ? fmtMoney(price) : "—";
+      $("vProfit").textContent = isFinite(profit) ? fmtMoney(profit) : "—";
+
+      if (typeof gtag === 'function'){
+        gtag('event', 'margin_calc', { mode: mode });
+      }
+    }
+
+    function setMode(next){
+      mode = next;
+      $("modePrice").classList.toggle("active", mode==="price");
+      $("modePrice").setAttribute("aria-selected", mode==="price");
+      $("modeMargin").classList.toggle("active", mode==="margin");
+      $("modeMargin").setAttribute("aria-selected", mode==="margin");
+      $("fieldPrice").style.display = mode==="price" ? "" : "none";
+      $("fieldMargin").style.display = mode==="margin" ? "" : "none";
+      render();
+    }
+
+    function init(){
+      $("modePrice").addEventListener("click", function(){ setMode("price"); });
+      $("modeMargin").addEventListener("click", function(){ setMode("margin"); });
+      $("cost").addEventListener("input", render);
+      $("price").addEventListener("input", render);
+      $("targetMargin").addEventListener("input", render);
+      render();
+    }
+
+    if (document.readyState === "loading"){
+      document.addEventListener("DOMContentLoaded", init);
+    } else { init(); }
+  </script>
+
+  <!-- FAQ structured data for rich results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What's the difference between margin and markup?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Margin divides profit by the selling price; markup divides profit by the cost. For the same $40 profit on a $60 cost / $100 price item, margin is 40% and markup is 66.7%. Margin is always the smaller number of the two." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate profit margin from cost and price?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Subtract cost from price to get profit, then divide profit by price and multiply by 100: Margin % = (Price - Cost) / Price x 100." }
+      },
+      {
+        "@type": "Question",
+        "name": "What price should I charge for a target margin?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use Price = Cost / (1 - Target margin / 100). For example, to hit a 25% margin on a $60 cost: 60 / 0.75 = $80." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a higher margin always better?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Higher margin generally means more profit per sale, but the right margin depends on your industry, competition, and volume. Compare against typical figures for your specific industry rather than a single universal target." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my data uploaded anywhere?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. This calculator runs entirely in your browser using plain JavaScript. Nothing you enter is sent to a server or stored." }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>

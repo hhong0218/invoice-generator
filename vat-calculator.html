@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://invoice.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VAT Calculator — Free International VAT / GST Calculator | InvoiceMaker</title>
+  <link rel="canonical" href="https://invoice.quietools.com/vat-calculator">
+  <meta property="og:url" content="https://invoice.quietools.com/vat-calculator">
+  <meta name="description" content="Free VAT calculator for 20+ countries (UK, EU, Australia, Canada, Japan &amp; more). Enter an amount and country to see the VAT/GST amount and total, or reverse-calculate the pre-VAT price from a VAT-inclusive total.">
+  <meta name="keywords" content="vat calculator, gst calculator, vat rates by country, reverse vat calculator, calculate vat, add vat, remove vat">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="VAT Calculator — Free International VAT / GST Calculator">
+  <meta property="og:image" content="https://invoice.quietools.com/og-image.jpg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta name="twitter:image" content="https://invoice.quietools.com/og-image.jpg">
+  <meta property="og:description" content="Calculate VAT or GST for 20+ countries, or back out the pre-tax amount from a VAT-inclusive total. Free, instant, no signup — everything runs in your browser.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{
+      --bg:#f4f6fb;--panel:#ffffff;--border:#e2e6ee;--text:#1f2733;--muted:#6b7686;
+      --accent:#2563eb;--accent-dark:#1d4ed8;--accent-soft:#eaf1ff;--ok:#16a34a;--shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04)
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;background:var(--panel);position:sticky;top:0;z-index:20;box-shadow:var(--shadow)}
+    .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:800;color:var(--text);letter-spacing:-.02em}
+    .logo span{color:var(--accent)}
+    .header-tag{font-size:.85rem;color:var(--muted)}
+    main{max-width:1200px;margin:0 auto;padding:1.5rem}
+    h1{font-size:1.7rem;margin-bottom:.4rem;letter-spacing:-.02em}
+    .lead{color:var(--muted);margin-bottom:1.25rem;max-width:760px}
+    .ad-slot{margin:1.25rem 0;min-height:90px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.8rem;border:1px dashed var(--border);border-radius:10px;background:var(--panel)}
+
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem;align-items:start}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}
+    .editor{padding:1.25rem}
+    .preview-col{position:sticky;top:84px}
+
+    .field{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.75rem}
+    label{font-size:.82rem;font-weight:600;color:var(--text)}
+    input,select{width:100%;background:#fff;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:.55rem .65rem;font-size:.9rem;font-family:inherit;transition:.15s}
+    input:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+    select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7686' d='M6 8 0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .65rem center;padding-right:1.8rem}
+
+    .mode-toggle{display:flex;gap:.5rem;margin-bottom:1.1rem;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.3rem}
+    .mode-toggle button{flex:1;background:transparent;border:none;border-radius:8px;padding:.55rem .5rem;font-size:.85rem;font-weight:700;color:var(--muted);cursor:pointer;transition:.15s}
+    .mode-toggle button.active{background:var(--accent);color:#fff}
+
+    .preview-head{display:flex;justify-content:space-between;align-items:center;padding:.85rem 1.1rem;border-bottom:1px solid var(--border)}
+    .preview-head h2{font-size:.95rem;font-weight:700}
+    .preview-head .hint{font-size:.78rem;color:var(--muted)}
+    .result{padding:1.6rem}
+    .result-big{text-align:center;padding:1.4rem 1rem;background:var(--accent-soft);border-radius:12px;margin-bottom:1.2rem}
+    .result-big .label{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;margin-bottom:.3rem}
+    .result-big .value{font-size:2.1rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+    .result-rows .row{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid var(--border);font-size:.92rem}
+    .result-rows .row:last-child{border-bottom:none}
+    .result-rows .row .v{font-variant-numeric:tabular-nums;font-weight:700}
+    .rate-note{margin-top:1.2rem;padding:.9rem 1rem;background:#fff8e6;border:1px solid #f2dfa0;border-radius:10px;font-size:.84rem;color:#7a5c00}
+    .rate-note strong{color:#5c4400}
+
+    .seo{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem;max-width:820px}
+    .seo h2{font-size:1.25rem;margin:1.5rem 0 .5rem;letter-spacing:-.01em}
+    .seo p{color:var(--muted);margin-bottom:.6rem}
+    .seo ul{color:var(--muted);margin:.3rem 0 .8rem 1.2rem}
+    .seo li{margin-bottom:.25rem}
+    .seo table{width:100%;border-collapse:collapse;margin:.6rem 0 1.2rem;font-size:.88rem}
+    .seo table th,.seo table td{border:1px solid var(--border);padding:.5rem .6rem;text-align:left}
+    .seo table th{background:var(--accent-soft);font-weight:700;color:var(--text)}
+    .seo table td{color:var(--muted)}
+    .source-note{font-size:.78rem;color:var(--muted);margin-top:.5rem;font-style:italic}
+    .faq details{border:1px solid var(--border);border-radius:10px;background:var(--panel);margin-bottom:.6rem;box-shadow:var(--shadow)}
+    .faq summary{cursor:pointer;padding:.85rem 1rem;font-weight:700;color:var(--text);list-style:none}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:"+";float:right;color:var(--accent);font-weight:700}
+    .faq details[open] summary::after{content:"–"}
+    .faq details p{padding:0 1rem 1rem;color:var(--muted);margin:0}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem;background:var(--panel)}
+
+    @media (max-width:900px){
+      .layout{grid-template-columns:1fr}
+      .preview-col{position:static}
+    }
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2324533526355362" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/" class="logo">Invoice<span>Maker</span></a>
+      <span class="header-tag"><a href="/guides/">Guides</a> &nbsp;·&nbsp; Free · Private · No signup</span>
+    </div>
+  </header>
+
+  <main>
+    <h1>VAT Calculator</h1>
+    <p class="lead">Calculate VAT or GST for 20+ countries. Enter an amount and pick a country to see the VAT amount and total — or flip to reverse mode to back out the pre-VAT price and VAT portion from a VAT-inclusive total. Everything runs in your browser; nothing is uploaded.</p>
+
+    <p style="color:var(--muted);font-size:.92rem;margin:-.25rem 0 1.1rem">Free calculators: <a href="/sales-tax-calculator">Sales tax</a> · <a href="/profit-margin-calculator">Profit margin</a> · <a href="/hourly-rate-calculator">Hourly rate</a> · <strong>VAT</strong> &nbsp;·&nbsp; also: <a href="/uk-invoice-template">UK invoice</a> · <a href="/australia-invoice-template">Australia invoice</a> · <a href="/canada-invoice-template">Canada invoice</a></p>
+
+    <div class="ad-slot">Advertisement</div>
+
+    <div class="layout">
+      <!-- ============ EDITOR ============ -->
+      <section class="card editor" aria-label="VAT calculator inputs">
+        <div class="mode-toggle" role="tablist">
+          <button type="button" id="modeForward" class="active" role="tab" aria-selected="true">Add VAT to an amount</button>
+          <button type="button" id="modeReverse" role="tab" aria-selected="false">Remove VAT (reverse)</button>
+        </div>
+
+        <div class="field" id="fieldNet">
+          <label for="netAmt">Amount (before VAT)</label>
+          <input id="netAmt" type="number" min="0" step="0.01" value="100" inputmode="decimal">
+        </div>
+        <div class="field" id="fieldGross" style="display:none">
+          <label for="grossAmt">Total (VAT included)</label>
+          <input id="grossAmt" type="number" min="0" step="0.01" value="120" inputmode="decimal">
+        </div>
+
+        <div class="field">
+          <label for="countrySel">Country</label>
+          <select id="countrySel"></select>
+        </div>
+
+        <div class="rate-note" id="rateNote"></div>
+      </section>
+
+      <!-- ============ RESULT ============ -->
+      <div class="preview-col">
+        <div class="card">
+          <div class="preview-head">
+            <h2>Result</h2>
+            <span class="hint">Updates as you type</span>
+          </div>
+          <div class="result">
+            <div class="result-big">
+              <div class="label" id="resultLabel">VAT amount</div>
+              <div class="value" id="resultValue">$0.00</div>
+            </div>
+            <div class="result-rows">
+              <div class="row"><span id="rowNetLabel">Amount before VAT</span><span class="v" id="vNet">$0.00</span></div>
+              <div class="row"><span id="rowVatLabel">VAT</span><span class="v" id="vVat">$0.00</span></div>
+              <div class="row"><span>Total (VAT included)</span><span class="v" id="vGross">$0.00</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-slot">Advertisement</div>
+
+    <section class="seo">
+      <h2>What is this VAT calculator?</h2>
+      <p>This tool calculates Value Added Tax (VAT) or Goods and Services Tax (GST) using each country's <strong>standard rate</strong> — the default rate that applies to most goods and services. Enter an amount and pick a country to add VAT and see the total, or switch to reverse mode to enter a VAT-inclusive total and see the VAT portion and pre-tax amount broken out separately.</p>
+
+      <h2>How it's calculated</h2>
+      <p>Adding VAT: <strong>VAT = Amount × Rate</strong>, and <strong>Total = Amount + VAT</strong>.</p>
+      <p>Removing VAT (reverse): <strong>Net amount = Total ÷ (1 + Rate)</strong>, and <strong>VAT = Total − Net amount</strong>. Dividing by <code>(1 + rate)</code> is the correct way to "un-add" VAT — simply subtracting the percentage from the total would understate the net amount and misstate the VAT portion.</p>
+
+      <h2>Standard VAT / GST rates by country (2026)</h2>
+      <p>These are each country's default <strong>standard rate</strong>. Most countries also apply reduced or zero rates to specific categories (food, books, children's items, etc.) — this calculator uses the standard rate only, since that's what applies to the majority of goods and services.</p>
+      <table id="rateTable">
+        <thead><tr><th>Country</th><th>Standard rate</th><th>Note</th></tr></thead>
+        <tbody id="rateTableBody"></tbody>
+      </table>
+      <p class="source-note" id="sourceNote"></p>
+
+      <h2>Notes on specific countries</h2>
+      <ul>
+        <li><strong>Canada:</strong> the federal Goods and Services Tax (GST) is 5% nationwide, but most provinces add their own provincial sales tax or a combined Harmonized Sales Tax (HST) on top — combined rates range roughly from 5% (Alberta, no PST) up to 15% (several Atlantic provinces). This calculator shows the federal GST rate only; check your specific province for the real combined rate.</li>
+        <li><strong>India:</strong> GST uses a multi-slab system rather than one flat rate. Following India's GST 2.0 reform (effective September 2025), most goods and services fall into a simplified 5% or 18% structure, with a 40% "de-merit" rate reserved for luxury and sin goods. This calculator uses <strong>18%</strong> as the standard/most common rate — always confirm the slab for your specific product or service.</li>
+        <li><strong>EU average:</strong> shown for reference — individual EU member states set their own standard rate (minimum 15% under EU rules), so always use the specific country's rate for real transactions.</li>
+      </ul>
+
+      <h2 id="faq">Frequently asked questions</h2>
+      <div class="faq">
+        <details open>
+          <summary>Does this show the exact VAT I'll be charged?</summary>
+          <p>It shows each country's standard rate, which applies to most goods and services. Many countries also have reduced rates (often for food, books, or children's products) or exemptions, so the exact rate for a specific purchase can differ from the standard rate shown here.</p>
+        </details>
+        <details>
+          <summary>How do I remove VAT from a total?</summary>
+          <p>Divide the VAT-inclusive total by (1 + the VAT rate as a decimal). For example, to remove 20% VAT from a £120 total: 120 ÷ 1.20 = £100 net, so the VAT portion is £20. Switch this calculator to "Remove VAT" mode to do this automatically.</p>
+        </details>
+        <details>
+          <summary>What's the difference between VAT and GST?</summary>
+          <p>They're functionally the same idea — a consumption tax collected at each stage of the supply chain and ultimately paid by the end consumer — just with different names in different countries. Australia, New Zealand, Canada, Singapore, and India call it GST; the UK, EU countries, and most others call it VAT.</p>
+        </details>
+        <details>
+          <summary>Why does Canada show only 5%?</summary>
+          <p>5% is the federal GST that applies everywhere in Canada. Most provinces add their own provincial sales tax or combine it into an HST, so the real combined rate in a given province is usually higher than 5% — check your specific province for the exact combined rate.</p>
+        </details>
+        <details>
+          <summary>Is my data uploaded anywhere?</summary>
+          <p>No. This calculator runs entirely in your browser using plain JavaScript. Nothing you enter is sent to a server or stored.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>InvoiceMaker — free browser-based invoice generator &amp; business calculators. Everything runs locally; nothing is uploaded.</p></footer>
+
+  <script>
+    "use strict";
+
+    /* ---------- Data: standard VAT / GST rates by country ---------- */
+    /* Sources (cross-checked): Tax Foundation "VAT Rates in Europe" (data as of January 2026),
+       Swiss Federal Tax Administration (Switzerland), Canada Revenue Agency (Canada GST),
+       and India GST Council GST 2.0 reform (effective Sept 22, 2025). */
+    var SOURCE_NAME = "Tax Foundation (EU VAT rates) and national tax authorities";
+    var SOURCE_URL = "https://taxfoundation.org/data/all/eu/value-added-tax-vat-rates-europe/";
+    var SOURCE_DATE = "January 2026";
+
+    var COUNTRIES = [
+      {n:"United Kingdom", r:20, note:""},
+      {n:"Germany", r:19, note:""},
+      {n:"France", r:20, note:""},
+      {n:"Italy", r:22, note:""},
+      {n:"Spain", r:21, note:""},
+      {n:"Netherlands", r:21, note:""},
+      {n:"Ireland", r:23, note:""},
+      {n:"Poland", r:23, note:""},
+      {n:"Sweden", r:25, note:""},
+      {n:"EU average (reference)", r:21.9, note:"Average of EU standard rates; use the specific member state for real transactions"},
+      {n:"Switzerland", r:8.1, note:""},
+      {n:"Norway", r:25, note:""},
+      {n:"Australia (GST)", r:10, note:""},
+      {n:"New Zealand (GST)", r:15, note:""},
+      {n:"Canada (federal GST)", r:5, note:"Federal only — provinces add PST/HST on top, up to ~15% combined"},
+      {n:"Japan", r:10, note:""},
+      {n:"Singapore (GST)", r:9, note:""},
+      {n:"South Africa", r:15, note:""},
+      {n:"United Arab Emirates", r:5, note:""},
+      {n:"India (GST)", r:18, note:"Multi-slab system (5% / 18% / 40%); 18% shown as the standard/most common rate"}
+    ];
+
+    var $ = function(id){ return document.getElementById(id); };
+    var mode = "forward"; // or "reverse"
+
+    function fmtMoney(n){
+      var num = isFinite(n) ? n : 0;
+      var neg = num < 0;
+      var s = Math.abs(num).toLocaleString("en-US", {minimumFractionDigits:2, maximumFractionDigits:2});
+      return (neg ? "-$" : "$") + s;
+    }
+    function num(v){ var n = parseFloat(v); return isFinite(n) ? n : 0; }
+    function trimRate(r){
+      return (r === Math.round(r)) ? String(r) : String(Math.round(r*1000)/1000);
+    }
+    function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+    function render(){
+      var c = COUNTRIES[$("countrySel").selectedIndex] || COUNTRIES[0];
+      var rate = c.r / 100;
+
+      var noteHtml = "<strong>" + esc(c.n) + "</strong> standard VAT/GST rate: <strong>" + trimRate(c.r) + "%</strong>.";
+      if (c.note) noteHtml += " " + esc(c.note) + ".";
+      $("rateNote").innerHTML = noteHtml;
+
+      var netAmt, vat, gross;
+      if (mode === "forward"){
+        netAmt = num($("netAmt").value);
+        vat = netAmt * rate;
+        gross = netAmt + vat;
+        $("resultLabel").textContent = "VAT amount";
+        $("resultValue").textContent = fmtMoney(vat);
+        $("rowNetLabel").textContent = "Amount before VAT";
+      } else {
+        gross = num($("grossAmt").value);
+        netAmt = rate > 0 ? (gross / (1 + rate)) : gross;
+        vat = gross - netAmt;
+        $("resultLabel").textContent = "VAT portion of total";
+        $("resultValue").textContent = fmtMoney(vat);
+        $("rowNetLabel").textContent = "Amount before VAT (backed out)";
+      }
+      $("rowVatLabel").textContent = "VAT (" + trimRate(c.r) + "%)";
+      $("vNet").textContent = fmtMoney(netAmt);
+      $("vVat").textContent = fmtMoney(vat);
+      $("vGross").textContent = fmtMoney(gross);
+
+      if (typeof gtag === 'function'){
+        gtag('event', 'vat_calc', { country: c.n, mode: mode });
+      }
+    }
+
+    function setMode(next){
+      mode = next;
+      $("modeForward").classList.toggle("active", mode==="forward");
+      $("modeForward").setAttribute("aria-selected", mode==="forward");
+      $("modeReverse").classList.toggle("active", mode==="reverse");
+      $("modeReverse").setAttribute("aria-selected", mode==="reverse");
+      $("fieldNet").style.display = mode==="forward" ? "" : "none";
+      $("fieldGross").style.display = mode==="reverse" ? "" : "none";
+      render();
+    }
+
+    function buildRateTable(){
+      var html = "";
+      for (var i=0;i<COUNTRIES.length;i++){
+        var c = COUNTRIES[i];
+        html += "<tr><td>" + esc(c.n) + "</td><td>" + trimRate(c.r) + "%</td><td>" + esc(c.note || "—") + "</td></tr>";
+      }
+      $("rateTableBody").innerHTML = html;
+    }
+
+    function init(){
+      var sel = $("countrySel");
+      for (var i=0;i<COUNTRIES.length;i++){
+        var o = document.createElement("option");
+        o.value = COUNTRIES[i].n; o.textContent = COUNTRIES[i].n + " — " + trimRate(COUNTRIES[i].r) + "%";
+        sel.appendChild(o);
+      }
+      // Default to United Kingdom, pairs naturally with the UK invoice template
+      sel.value = "United Kingdom";
+
+      buildRateTable();
+      $("sourceNote").textContent = "Standard rates as of " + SOURCE_DATE + ", source: " + SOURCE_NAME + " (" + SOURCE_URL + ").";
+
+      $("modeForward").addEventListener("click", function(){ setMode("forward"); });
+      $("modeReverse").addEventListener("click", function(){ setMode("reverse"); });
+      $("netAmt").addEventListener("input", render);
+      $("grossAmt").addEventListener("input", render);
+      sel.addEventListener("change", render);
+
+      render();
+    }
+
+    if (document.readyState === "loading"){
+      document.addEventListener("DOMContentLoaded", init);
+    } else { init(); }
+  </script>
+
+  <!-- FAQ structured data for rich results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does this show the exact VAT I'll be charged?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It shows each country's standard rate, which applies to most goods and services. Many countries also have reduced rates or exemptions, so the exact rate for a specific purchase can differ from the standard rate shown here." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I remove VAT from a total?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Divide the VAT-inclusive total by (1 + the VAT rate as a decimal). For example, to remove 20% VAT from a 120 total: 120 / 1.20 = 100 net, so the VAT portion is 20." }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the difference between VAT and GST?",
+        "acceptedAnswer": { "@type": "Answer", "text": "They're functionally the same idea - a consumption tax collected at each stage of the supply chain and paid by the end consumer - just with different names in different countries." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does Canada show only 5%?",
+        "acceptedAnswer": { "@type": "Answer", "text": "5% is the federal GST that applies everywhere in Canada. Most provinces add their own provincial sales tax or combine it into an HST, so the real combined rate in a given province is usually higher than 5%." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my data uploaded anywhere?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. This calculator runs entirely in your browser using plain JavaScript. Nothing you enter is sent to a server or stored." }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
