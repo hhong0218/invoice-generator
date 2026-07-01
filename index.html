@@ -84,7 +84,10 @@
     .actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
 
     .logo-upload{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
-    .logo-upload input[type=file]{font-size:.82rem}
+    .file-picker{display:flex;align-items:center;gap:.6rem;margin-top:.3rem}
+    .file-picker button{padding:.4rem .8rem;font-size:.82rem;font-weight:600}
+    .file-picker-name{font-size:.82rem;color:var(--muted)}
+    .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     .logo-thumb{height:42px;max-width:140px;object-fit:contain;border:1px solid var(--border);border-radius:6px;padding:2px;background:#fff;display:none}
     .link-btn{background:none;border:none;color:var(--muted);font-size:.8rem;cursor:pointer;padding:.2rem .3rem;text-decoration:underline}
     .link-btn:hover{color:#dc2626}
@@ -217,7 +220,11 @@
         <div class="logo-upload field">
           <div style="flex:1;min-width:200px">
             <label for="logoInput">Logo (optional)</label>
-            <input id="logoInput" type="file" accept="image/*">
+            <div class="file-picker">
+              <button type="button" id="logoBtn">Choose file</button>
+              <span id="logoFileName" class="file-picker-name">No file chosen</span>
+            </div>
+            <input id="logoInput" type="file" accept="image/*" class="visually-hidden">
           </div>
           <img id="logoThumb" class="logo-thumb" alt="Logo preview">
           <button type="button" id="removeLogo" class="link-btn" style="display:none">Remove logo</button>
@@ -578,6 +585,7 @@
     }
 
     /* ---------- Logo upload ---------- */
+    $("logoBtn").addEventListener("click", function(){ $("logoInput").click(); });
     $("logoInput").addEventListener("change", function(e){
       var file = e.target.files && e.target.files[0];
       if (!file){ return; }
@@ -587,6 +595,7 @@
         logoMime = file.type;
         var thumb = $("logoThumb"); thumb.src = logoDataUrl; thumb.style.display = "inline-block";
         var pv = $("pvLogo"); pv.src = logoDataUrl; pv.style.display = "block";
+        $("logoFileName").textContent = file.name;
         $("removeLogo").style.display = "inline-block";
       };
       reader.readAsDataURL(file);
@@ -596,6 +605,7 @@
       $("logoInput").value = "";
       $("logoThumb").style.display = "none"; $("logoThumb").removeAttribute("src");
       $("pvLogo").style.display = "none"; $("pvLogo").removeAttribute("src");
+      $("logoFileName").textContent = "No file chosen";
       this.style.display = "none";
     });
 
