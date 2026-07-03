@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://invoice.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice Numbering Best Practices | InvoiceMaker</title>
+  <link rel="canonical" href="https://invoice.quietools.com/guides/invoice-numbering-best-practices.html">
+  <meta property="og:url" content="https://invoice.quietools.com/guides/invoice-numbering-best-practices.html">
+  <meta name="description" content="How to number invoices the right way: sequential vs date-based systems, useful prefixes, why gaps and duplicates cause problems, and where to start.">
+  <meta name="keywords" content="invoice numbering, invoice number format, sequential invoice numbers, invoice numbering system, how to number invoices">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Invoice Numbering Best Practices">
+  <meta property="og:image" content="https://invoice.quietools.com/og-image.jpg">
+  <meta property="og:image:width" content="1376">
+  <meta property="og:image:height" content="768">
+  <meta name="twitter:image" content="https://invoice.quietools.com/og-image.jpg">
+  <meta property="og:description" content="Sequential vs date-based invoice numbers, useful prefixes, and why gaps and duplicates cause problems. A simple system that scales.">
+  <meta property="og:type" content="article">
+  <meta name="twitter:card" content="summary">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9QKMV5JQL5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9QKMV5JQL5');
+  </script>
+  <style>
+    :root{
+      --bg:#f4f6fb;--panel:#ffffff;--border:#e2e6ee;--text:#1f2733;--muted:#6b7686;
+      --accent:#2563eb;--accent-dark:#1d4ed8;--accent-soft:#eaf1ff;--ok:#16a34a;--shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04)
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{border-bottom:1px solid var(--border);padding:1rem 1.5rem;background:var(--panel);position:sticky;top:0;z-index:20;box-shadow:var(--shadow)}
+    .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{font-size:1.25rem;font-weight:800;color:var(--text);letter-spacing:-.02em}
+    .logo span{color:var(--accent)}
+    .header-tag{font-size:.85rem;color:var(--muted)}
+    main{max-width:820px;margin:0 auto;padding:1.5rem}
+    .crumbs{font-size:.82rem;color:var(--muted);margin-bottom:1rem}
+    article h1{font-size:1.9rem;margin-bottom:.5rem;letter-spacing:-.02em;line-height:1.2}
+    .lead{color:var(--muted);margin-bottom:1.5rem;font-size:1.02rem}
+    article h2{font-size:1.3rem;margin:1.8rem 0 .6rem;letter-spacing:-.01em}
+    article h3{font-size:1.05rem;margin:1.2rem 0 .4rem}
+    article p{margin-bottom:.8rem}
+    article ul,article ol{margin:.4rem 0 1rem 1.3rem}
+    article li{margin-bottom:.35rem}
+    article strong{color:var(--text)}
+    .cta{display:block;background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:12px;padding:1.1rem 1.25rem;margin:2rem 0;box-shadow:var(--shadow)}
+    .cta a{font-weight:700}
+    .cta-btn{display:inline-block;margin-top:.5rem;background:var(--accent);color:#fff;padding:.6rem 1.1rem;border-radius:8px;font-weight:700}
+    .cta-btn:hover{background:var(--accent-dark);text-decoration:none}
+    .faq h3{margin-top:1.1rem}
+    .related{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.2rem}
+    .related h2{font-size:1.1rem;margin-top:0}
+    .related ul{list-style:none;margin-left:0}
+    .related li{margin-bottom:.4rem}
+    footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:.85rem;margin-top:3rem;background:var(--panel)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="/" class="logo">Invoice<span>Maker</span></a>
+      <span class="header-tag">Free · Private · No signup</span>
+    </div>
+  </header>
+
+  <main>
+    <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/guides/">Guides</a> &rsaquo; Invoice numbering best practices</nav>
+    <article>
+      <h1>Invoice Numbering Best Practices</h1>
+      <p class="lead">Every invoice needs a unique number &mdash; it is how you, your client, and the tax office tell one bill from another. A good numbering system is quietly invisible; a bad one causes duplicate payments, lost invoices, and awkward questions at tax time. Here is how to number invoices in a way that stays clean as you grow.</p>
+
+      <h2>Why invoice numbers matter</h2>
+      <p>An invoice number is the invoice&rsquo;s unique reference. It lets a client say &ldquo;we&rsquo;re paying #1043&rdquo; without ambiguity, lets you match a payment to the right job, and gives your accountant a clean audit trail. In many countries, sequential numbering is a legal requirement for tax-registered businesses precisely because gaps could hide unreported sales. Even where it is not the law, following the same discipline keeps your books defensible and easy to reconcile.</p>
+
+      <h2>The two main numbering systems</h2>
+      <ul>
+        <li><strong>Sequential.</strong> Simple running numbers: 1001, 1002, 1003. Easy to follow and hard to get wrong. Starting at 1001 rather than 1 is a common trick so your first client can&rsquo;t tell they are your very first customer.</li>
+        <li><strong>Date-based.</strong> The number embeds the year or month, such as <strong>2026-001</strong> or <strong>INV-202606-014</strong>. This makes the year obvious at a glance and lets you restart the counter each year while keeping numbers unique.</li>
+      </ul>
+      <p>Both are fine. Pick one and never mix them mid-year &mdash; consistency is the whole point.</p>
+
+      <h2>Using prefixes and padding</h2>
+      <p>A short prefix adds useful context without breaking the sequence. Common patterns:</p>
+      <ul>
+        <li><strong>Document type:</strong> <code>INV-</code> for invoices, so they don&rsquo;t get confused with quotes or receipts.</li>
+        <li><strong>Year:</strong> <code>2026-</code> to group a financial year together.</li>
+        <li><strong>Client code:</strong> <code>ACME-</code> if you want to eyeball which client an invoice belongs to.</li>
+      </ul>
+      <p>Pad the running number with leading zeros &mdash; <code>INV-2026-0007</code> rather than <code>INV-2026-7</code> &mdash; so numbers sort correctly in a spreadsheet and look consistent. Three or four digits of padding is plenty for most small businesses.</p>
+
+      <h2>Rules that keep the system clean</h2>
+      <ol>
+        <li><strong>Never reuse a number.</strong> Each invoice number must appear exactly once, ever. Duplicates cause double payments and reconciliation nightmares.</li>
+        <li><strong>Avoid gaps.</strong> Don&rsquo;t skip numbers. If you void an invoice, keep the number in the sequence and mark it &ldquo;cancelled&rdquo; rather than deleting it, so the run stays unbroken.</li>
+        <li><strong>Keep it increasing.</strong> Always move forward. Going back to fill a gap creates confusion and, for tax-registered businesses, can raise questions.</li>
+        <li><strong>Don&rsquo;t encode secrets.</strong> The number is visible to the client, so avoid embedding anything sensitive or anything that changes (like a total).</li>
+      </ol>
+
+      <h2>Where to start and how to track it</h2>
+      <p>Start wherever you like &mdash; 1, 1001, or 2026-001 &mdash; then only ever go up. The one thing you must do is track the last number used so the next one is always unique; a single note, a spreadsheet, or your invoicing tool&rsquo;s counter all work. When you create an invoice with the generator, set the invoice number to the next value in your chosen scheme and keep a record of it. A minute of discipline per invoice saves hours of untangling later.</p>
+
+      <div class="cta">
+        <strong>Number your next invoice properly.</strong> Set a unique invoice number, dates, and line items, then download a clean PDF &mdash; free, in your browser.
+        <br><a class="cta-btn" href="/">Create your invoice now &rarr;</a>
+      </div>
+
+      <section class="faq">
+        <h2>Frequently asked questions</h2>
+        <h3>Do invoice numbers have to be sequential?</h3>
+        <p>In many countries, tax-registered businesses are required to use sequential (or at least unique and gap-free) numbering so that sales can&rsquo;t be hidden. Even where it isn&rsquo;t legally required, sequential numbering keeps your books clean and easy to audit, so it is the recommended default.</p>
+        <h3>What number should I start my invoices at?</h3>
+        <p>Anywhere you like &mdash; then only go up. Many businesses start at 1001 rather than 1 so a first client can&rsquo;t tell they&rsquo;re the very first customer. The exact starting point doesn&rsquo;t matter; consistency and uniqueness do.</p>
+        <h3>Can I include the year or client in the invoice number?</h3>
+        <p>Yes. Prefixes like INV-, a year such as 2026-, or a client code such as ACME- add helpful context. Pad the running number with leading zeros (for example INV-2026-0007) so numbers sort correctly and look consistent.</p>
+        <h3>What do I do if I cancel an invoice?</h3>
+        <p>Keep its number in the sequence and mark the invoice &ldquo;cancelled&rdquo; rather than deleting it. This avoids a gap in the run, which keeps your records clean and defensible at tax time.</p>
+      </section>
+
+      <section class="related">
+        <h2>Keep reading</h2>
+        <ul>
+          <li><a href="/guides/what-to-include-on-an-invoice.html">What to include on an invoice</a></li>
+          <li><a href="/guides/net-30-payment-terms.html">Net 30 payment terms explained</a></li>
+          <li><a href="/guides/how-to-make-an-invoice.html">How to make an invoice</a></li>
+          <li><a href="/guides/how-to-send-an-invoice-by-email.html">How to send an invoice by email</a></li>
+          <li><a href="/">Free invoice generator</a></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <footer><p>InvoiceMaker &mdash; free browser-based invoice generator. Everything runs locally; nothing is uploaded.</p></footer>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do invoice numbers have to be sequential?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In many countries, tax-registered businesses are required to use sequential (or at least unique and gap-free) numbering so that sales can't be hidden. Even where it isn't legally required, sequential numbering keeps your books clean and easy to audit, so it is the recommended default."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What number should I start my invoices at?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Anywhere you like — then only go up. Many businesses start at 1001 rather than 1 so a first client can't tell they're the very first customer. The exact starting point doesn't matter; consistency and uniqueness do."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I include the year or client in the invoice number?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Prefixes like INV-, a year such as 2026-, or a client code such as ACME- add helpful context. Pad the running number with leading zeros (for example INV-2026-0007) so numbers sort correctly and look consistent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do I do if I cancel an invoice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Keep its number in the sequence and mark the invoice cancelled rather than deleting it. This avoids a gap in the run, which keeps your records clean and defensible at tax time."
+      }
+    }
+  ]
+}
+  </script>
+</body>
+</html>
