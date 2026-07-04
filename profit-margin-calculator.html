@@ -24,8 +24,9 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-9QKMV5JQL5');
+    if(location.hostname.indexOf('.pages.dev')===-1){gtag('config','G-9QKMV5JQL5',{linker:{domains:['quietools.com','calc.quietools.com','image.quietools.com','dev.quietools.com','typing.quietools.com','invoice.quietools.com']}});}
   </script>
+  <script src="/assets/analytics.js" defer></script>
   <style>
     :root{
       --bg:#f4f6fb;--panel:#ffffff;--border:#e2e6ee;--text:#1f2733;--muted:#6b7686;
@@ -147,7 +148,7 @@
             <h2>Result</h2>
             <span class="hint">Updates as you type</span>
           </div>
-          <div class="result">
+          <div class="result" id="resultsPanel" data-tool="profit-margin-calculator">
             <div class="result-grid">
               <div class="result-big" id="boxMargin">
                 <div class="label">Profit margin</div>

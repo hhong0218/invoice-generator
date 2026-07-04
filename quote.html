@@ -24,8 +24,9 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-9QKMV5JQL5');
+    if(location.hostname.indexOf('.pages.dev')===-1){gtag('config','G-9QKMV5JQL5',{linker:{domains:['quietools.com','calc.quietools.com','image.quietools.com','dev.quietools.com','typing.quietools.com','invoice.quietools.com']}});}
   </script>
+  <script src="/assets/analytics.js" defer></script>
   <!-- jsPDF (only external dependency, used for PDF export) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
@@ -781,8 +782,8 @@
       document.querySelector(".editor").addEventListener("change", render);
 
       $("addRow").addEventListener("click", function(){ makeRow(); render(); });
-      $("downloadPdf").addEventListener("click", downloadPDF);
-      $("printBtn").addEventListener("click", function(){ window.print(); });
+      $("downloadPdf").addEventListener("click", function(){ if(window.qtDownload)qtDownload("quote","pdf"); downloadPDF(); });
+      $("printBtn").addEventListener("click", function(){ if(window.qtDownload)qtDownload("quote","print"); window.print(); });
       $("resetBtn").addEventListener("click", function(){
         if (!confirm("Clear all fields and start a new quote?")) return;
         document.querySelectorAll(".editor input[type=text], .editor textarea").forEach(function(el){ el.value=""; });

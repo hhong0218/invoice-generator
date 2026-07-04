@@ -24,8 +24,9 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-9QKMV5JQL5');
+    if(location.hostname.indexOf('.pages.dev')===-1){gtag('config','G-9QKMV5JQL5',{linker:{domains:['quietools.com','calc.quietools.com','image.quietools.com','dev.quietools.com','typing.quietools.com','invoice.quietools.com']}});}
   </script>
+  <script src="/assets/analytics.js" defer></script>
   <!-- jsPDF (only external dependency, used for PDF export) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
@@ -180,8 +181,8 @@
     <h1>Free Invoice Generator</h1>
     <p class="lead">Create a professional invoice in seconds. Fill in the details on the left, watch the live preview on the right, then download a clean PDF or print it. Everything runs in your browser — nothing is uploaded.</p>
 
-    <p style="color:var(--muted);font-size:.92rem;margin:-.25rem 0 1.1rem">Free business documents: <strong>Invoice</strong> · <a href="/quote">Quote / Estimate</a> · <a href="/receipt">Receipt</a> &nbsp;·&nbsp; by profession: <a href="/freelance-invoice">Freelance</a> · <a href="/consultant-invoice">Consultant</a> · <a href="/contractor-invoice">Contractor</a> · <a href="/electrician-invoice">Electrician</a> · <a href="/plumber-invoice">Plumber</a> · <a href="/landscaping-invoice">Landscaping</a></p>
-    <p style="color:var(--muted);font-size:.92rem;margin:-.25rem 0 1.1rem">Free calculators: <a href="/sales-tax-calculator">Sales tax</a> · <a href="/profit-margin-calculator">Profit margin</a> · <a href="/hourly-rate-calculator">Hourly rate</a> · <a href="/vat-calculator">VAT</a></p>
+    <p style="color:var(--muted);font-size:.92rem;margin:-.25rem 0 1.1rem">Free business documents: <strong>Invoice</strong> · <a href="/quote" data-nav>Quote / Estimate</a> · <a href="/receipt" data-nav>Receipt</a> &nbsp;·&nbsp; by profession: <a href="/freelance-invoice" data-nav>Freelance</a> · <a href="/consultant-invoice" data-nav>Consultant</a> · <a href="/contractor-invoice" data-nav>Contractor</a> · <a href="/electrician-invoice" data-nav>Electrician</a> · <a href="/plumber-invoice" data-nav>Plumber</a> · <a href="/landscaping-invoice" data-nav>Landscaping</a></p>
+    <p style="color:var(--muted);font-size:.92rem;margin:-.25rem 0 1.1rem">Free calculators: <a href="/sales-tax-calculator" data-nav>Sales tax</a> · <a href="/profit-margin-calculator" data-nav>Profit margin</a> · <a href="/hourly-rate-calculator" data-nav>Hourly rate</a> · <a href="/vat-calculator" data-nav>VAT</a></p>
 
     <!-- AD-SLOT:Top | AdSense 승인 후 교체 -->
     <div class="ad-slot">Advertisement</div>
@@ -840,8 +841,8 @@
       document.querySelector(".editor").addEventListener("change", render);
 
       $("addRow").addEventListener("click", function(){ makeRow(); render(); });
-      $("downloadPdf").addEventListener("click", downloadPDF);
-      $("printBtn").addEventListener("click", function(){ window.print(); });
+      $("downloadPdf").addEventListener("click", function(){ if(window.qtDownload)qtDownload("invoice-generator","pdf"); downloadPDF(); });
+      $("printBtn").addEventListener("click", function(){ if(window.qtDownload)qtDownload("invoice-generator","print"); window.print(); });
       $("resetBtn").addEventListener("click", function(){
         if (!confirm("Clear all fields and start a new invoice?")) return;
         document.querySelectorAll(".editor input[type=text], .editor textarea").forEach(function(el){ el.value=""; });
