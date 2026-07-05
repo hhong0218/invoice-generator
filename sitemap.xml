@@ -33,12 +33,12 @@
   <url><loc>https://invoice.quietools.com/contact</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://invoice.quietools.com/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://invoice.quietools.com/guides/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://invoice.quietools.com/guides/how-to-make-an-invoice.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://invoice.quietools.com/guides/what-to-include-on-an-invoice.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://invoice.quietools.com/guides/invoice-vs-receipt-vs-quote.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://invoice.quietools.com/guides/how-to-get-paid-faster.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://invoice.quietools.com/guides/how-to-write-a-payment-reminder.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://invoice.quietools.com/guides/net-30-payment-terms.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://invoice.quietools.com/guides/invoice-numbering-best-practices.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://invoice.quietools.com/guides/how-to-send-an-invoice-by-email.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://invoice.quietools.com/guides/how-to-make-an-invoice</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://invoice.quietools.com/guides/what-to-include-on-an-invoice</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://invoice.quietools.com/guides/invoice-vs-receipt-vs-quote</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://invoice.quietools.com/guides/how-to-get-paid-faster</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://invoice.quietools.com/guides/how-to-write-a-payment-reminder</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://invoice.quietools.com/guides/net-30-payment-terms</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://invoice.quietools.com/guides/invoice-numbering-best-practices</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://invoice.quietools.com/guides/how-to-send-an-invoice-by-email</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
