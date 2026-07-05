@@ -4,14 +4,14 @@
   <script>(function(){if(location.hostname.indexOf(".pages.dev")>-1){location.replace("https://invoice.quietools.com"+location.pathname+location.search+location.hash);}})();</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Invoice Generator — Create &amp; Download PDF Invoices | InvoiceMaker</title>
+  <title>Free PDF Invoice Generator — Create &amp; Download Invoices, No Signup</title>
   <link rel="canonical" href="https://invoice.quietools.com/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:url" content="https://invoice.quietools.com/">
-  <meta name="description" content="Free online invoice generator. Fill in your details, add line items with automatic tax and totals, and download a clean PDF invoice — all in your browser. Nothing is uploaded to a server.">
-  <meta name="keywords" content="free invoice generator, invoice template, create invoice online, invoice pdf, invoice maker, billing">
+  <meta name="description" content="Free PDF invoice generator — create professional invoices online and download them as a print-ready PDF in seconds. No signup, no watermark, nothing uploaded: everything runs in your browser.">
+  <meta name="keywords" content="pdf invoice generator, free invoice generator, invoice template, create invoice online, invoice pdf, invoice maker, billing">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Free Invoice Generator — Create &amp; Download PDF Invoices">
+  <meta property="og:title" content="Free PDF Invoice Generator — Create &amp; Download Invoices">
   <meta property="og:image" content="https://invoice.quietools.com/og-image.jpg">
   <meta property="og:image:width" content="1376">
   <meta property="og:image:height" content="768">
@@ -179,8 +179,8 @@
   </header>
 
   <main>
-    <h1>Free Invoice Generator</h1>
-    <p class="lead">Create a professional invoice in seconds. Fill in the details on the left, watch the live preview on the right, then download a clean PDF or print it. Everything runs in your browser — nothing is uploaded.</p>
+    <h1>Free PDF Invoice Generator</h1>
+    <p class="lead">Create a professional invoice and download it as a PDF in seconds — free, with no signup. Fill in the details on the left, watch the live preview on the right, then download a clean, print-ready PDF. Everything runs in your browser; nothing is uploaded.</p>
 
     <p style="color:var(--muted);font-size:.92rem;margin:-.25rem 0 1.1rem">Free business documents: <strong>Invoice</strong> · <a href="/quote" data-nav>Quote / Estimate</a> · <a href="/receipt" data-nav>Receipt</a> &nbsp;·&nbsp; by profession: <a href="/freelance-invoice" data-nav>Freelance</a> · <a href="/consultant-invoice" data-nav>Consultant</a> · <a href="/contractor-invoice" data-nav>Contractor</a> · <a href="/electrician-invoice" data-nav>Electrician</a> · <a href="/plumber-invoice" data-nav>Plumber</a> · <a href="/landscaping-invoice" data-nav>Landscaping</a> · <a href="/hvac-invoice" data-nav>HVAC</a> · <a href="/roofing-invoice" data-nav>Roofing</a> · <a href="/handyman-invoice" data-nav>Handyman</a> · <a href="/painter-invoice" data-nav>Painter</a> · <a href="/lawn-care-invoice" data-nav>Lawn care</a></p>
     <p style="color:var(--muted);font-size:.92rem;margin:-.25rem 0 1.1rem">Free calculators: <a href="/sales-tax-calculator" data-nav>Sales tax</a> · <a href="/profit-margin-calculator" data-nav>Profit margin</a> · <a href="/hourly-rate-calculator" data-nav>Hourly rate</a> · <a href="/vat-calculator" data-nav>VAT</a></p>
@@ -867,6 +867,34 @@
     } else { init(); }
   </script>
 
+  <!-- HowTo structured data (matches the "How to create an invoice" section) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to create an invoice",
+    "description": "Create a professional invoice and download it as a PDF in three steps, free and in your browser.",
+    "totalTime": "PT2M",
+    "estimatedCost": { "@type": "MonetaryAmount", "currency": "USD", "value": "0" },
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Add your details",
+        "text": "Enter your business name and address under From, then your client's details under Bill to. Set an invoice number, issue date, due date, and currency."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "List what you're billing for",
+        "text": "Add a line for each product or service with a description, quantity, and unit price. Line totals, the subtotal, tax, and grand total are calculated automatically."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Download or print",
+        "text": "Click Download PDF to save a clean, print-ready invoice, or use Print to send it straight to your printer. Optionally upload your logo first to brand the document."
+      }
+    ]
+  }
+  </script>
   <!-- FAQ structured data for rich results -->
   <script type="application/ld+json">
   {
@@ -904,7 +932,7 @@
       {
         "@type": "Question",
         "name": "Can I add my logo?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the logo upload in the editor to add your own logo. It appears in the live preview and in the downloaded PDF, and it stays on your device." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use the \"Logo (optional)\" upload in the editor to add your own logo. It appears in the live preview and in the downloaded PDF, and it stays on your device." }
       },
       {
         "@type": "Question",
