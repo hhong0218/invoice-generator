@@ -1,0 +1,18 @@
+# Cloudflare Pages headers
+#
+# NOTE on framing: CF Pages MERGES all matching rules cumulatively (a more
+# specific block does NOT override a general one). So we must NOT lock framing
+# on /* and try to open it on /embed/* — both rules would apply and the
+# restrictive frame-ancestors would win, breaking the embed widget. Since this
+# is a stateless tool site (no auth / no sensitive session), we intentionally do
+# NOT set a global framing lock; instead /embed/* is explicitly declared
+# framable so the backlink widget works everywhere. (If a page ever needs
+# clickjack protection, scope frame-ancestors to that exact path, never /*.)
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Embeddable widget pages: explicitly framable by any site (the backlink engine).
+/embed/*
+  Content-Security-Policy: frame-ancestors *
